@@ -1,101 +1,59 @@
 # Landing Page Handoff
 
-Last updated: 2026-04-07
+Last updated: 2026-04-09
 
-## 1) Scope Guardrails
+## 1) Isolation Rule
 
-- This landing implementation is isolated under `Starfirelandingpage-main/`.
-- Do not edit `platform/`, `canvas/`, `workspace-template/` for landing-only tasks.
-- Commit scope should remain under `Starfirelandingpage-main/**`.
+- Keep all work inside `Starfirelandingpage-main/**`.
+- Do not edit `platform/`, `canvas/`, or `workspace-template/` for landing tasks.
+- This folder is a standalone repo and should stay logically independent.
 
-## 2) Current Section Structure
+## 2) Information Architecture
 
-The page is assembled in [`src/app/App.tsx`](./src/app/App.tsx):
+Page assembly is in `src/app/App.tsx`:
 
 1. `Header`
 2. `Hero`
-3. `MarketMomentum`
-4. `UseCases`
-5. `MemoryArchitecture`
-6. `Enterprise` (advantages)
+3. `WhyNow`
+4. `Moats`
+5. `CapabilityProof`
+6. `UseCases`
 7. `FinalCTA`
 8. `Footer`
 
-## 3) Visual System (Current)
+## 3) Content Ownership
 
-- Overall style: dark, cold-tone, logo-aligned blue/cyan palette
-- Primary emphasis gradient: `from-sky-300 via-blue-300 to-cyan-200`
-- Background shape effect: top-only `ShapeGrid` in [`LandingBackground.tsx`](./src/app/components/background/LandingBackground.tsx)
-- Accessibility pass: gray text classes were raised to higher contrast in [`src/styles/theme.css`](./src/styles/theme.css)
+- Bilingual copy is centralized in `src/app/content.ts`.
+- Real external links are centralized in `siteLinks` in the same file.
+- Section components should read content from this file instead of embedding large copy blocks.
 
-## 4) Key Components
+## 4) Visual System
 
-## `Hero.tsx`
-- Main positioning statement + primary CTA
-- The short tagline row was intentionally removed and replaced with a full descriptive sentence
+- Palette: deep navy + steel blue + cyan accent.
+- Typography:
+  - Display: Space Grotesk
+  - Body: Manrope
+  - Technical labels: JetBrains Mono
+- Tokens and global baseline are defined in `src/styles/theme.css`.
+- Reduced-motion mode is supported through CSS media query and `useReducedMotion`.
 
-## `UseCases.tsx`
-- Scenario tabs retained
-- Rotating headline uses [`RotatingText.tsx`](./src/app/components/RotatingText.tsx)
-- Emphasis strip uses logo-theme gradient
+## 5) Hero Visual Policy
 
-## `MemoryArchitecture.tsx`
-- Dedicated promotional section for HMA
-- Messaging based on project docs:
-  - L1 local memory
-  - L2 team shared memory
-  - L3 corporate memory
+- `HeroVisual.tsx` is code-native (no photo assets).
+- Use Starfire context only (no generic tenant placeholders like "Acme").
+- Keep cards short, factual, and linked to shipped capability language.
 
-## `Enterprise.tsx`
-- Alternating left-right layout
-- Image panel is now standard slider (no folding collage)
-- Features:
-  - left/right arrow controls
-  - dot pagination
-  - fixed `16:9` frame
+## 6) Quality Guards
 
-## `FinalCTA.tsx`
-- Non-rotating conversion block
-- Uses original “Design your AI org chart” intent with stronger hierarchy and conversion emphasis
+- No `href="#"` placeholders.
+- No Unsplash or other placeholder media URLs.
+- No `Inter` font usage.
+- `npm run build` must pass before merge.
+- Validate responsive layout at 375 / 768 / 1280 widths.
 
-## 5) Placeholder Media Policy
+## 7) Next Iteration Suggestions
 
-- Current images are placeholders and explicitly labeled `Placeholder Media`.
-- Replace image URLs in:
-  - [`UseCases.tsx`](./src/app/components/UseCases.tsx)
-  - [`Enterprise.tsx`](./src/app/components/Enterprise.tsx)
-- Keep aspect ratios unchanged unless design review approves a layout refactor.
+1. Add light analytics hooks for CTA clicks.
+2. Add visual regression snapshots for key sections.
+3. Replace minor in-component technical labels with content-layer entries for full copy centralization.
 
-## 6) Branding Assets
-
-Stored in [`public/branding`](./public/branding):
-
-- `starfire-logo.png` (icon)
-- `starfire-text-logo-white.png` (white transparent text logo)
-- `starfire-text-logo.png` (legacy text logo; optional fallback)
-
-Header currently renders icon + white text logo together.
-
-## 7) Cleanup Already Done
-
-- Removed unused legacy sections and unused component bundles:
-  - old section components (`Problem`, `Architecture`, `Differentiators`, `Comparison`, `OrgTopology`)
-  - unused `ui/` and `figma/` directories
-- Removed empty placeholder docs in `guidelines/`
-
-## 8) Recommended Next Tasks
-
-1. Replace placeholder media with real Starfire product captures
-2. Add simple auto-play + pause-on-hover for advantage slider (optional)
-3. Add section-level analytics events for CTA clicks
-4. Snapshot visual regression baseline after media replacement
-
-## 9) QA Checklist Before Merge
-
-- `npm run build` passes
-- Hero + CTA copy remains aligned with Starfire core positioning
-- Contrast remains readable on dark backgrounds
-- Mobile view checks:
-  - `375px` width
-  - `768px` width
-  - `1280px` width

@@ -1,55 +1,12 @@
-import { motion } from "motion/react";
 import { Github, Menu, X } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 import { useState } from "react";
+import { landingContent, siteLinks } from "../content";
 import type { Locale } from "../i18n";
 
 type HeaderProps = {
   locale: Locale;
   onLocaleChange: (locale: Locale) => void;
-};
-
-type HeaderCopy = {
-  nav: Array<{ label: string; href: string }>;
-  github: string;
-  signIn: string;
-  explore: string;
-  language: {
-    en: string;
-    zh: string;
-  };
-};
-
-const copyByLocale: Record<Locale, HeaderCopy> = {
-  en: {
-    nav: [
-      { label: "Home", href: "#" },
-      { label: "Scenarios", href: "#scenarios" },
-      { label: "Advantages", href: "#advantages" },
-      { label: "Docs", href: "#docs" },
-    ],
-    github: "GitHub",
-    signIn: "Sign in",
-    explore: "Explore Platform",
-    language: {
-      en: "EN",
-      zh: "中文",
-    },
-  },
-  zh: {
-    nav: [
-      { label: "首页", href: "#" },
-      { label: "应用场景", href: "#scenarios" },
-      { label: "产品优势", href: "#advantages" },
-      { label: "文档", href: "#docs" },
-    ],
-    github: "GitHub",
-    signIn: "登录",
-    explore: "探索平台",
-    language: {
-      en: "EN",
-      zh: "中文",
-    },
-  },
 };
 
 function LocaleSwitch({
@@ -61,19 +18,19 @@ function LocaleSwitch({
   onLocaleChange: (locale: Locale) => void;
   compact?: boolean;
 }) {
-  const labels = copyByLocale[locale].language;
+  const labels = landingContent[locale].header.language;
 
   return (
     <div
-      className={`inline-flex items-center rounded-md border border-white/[0.12] bg-white/[0.03] p-0.5 ${
-        compact ? "w-full" : ""
+      className={`inline-flex items-center rounded-md border border-[var(--line-soft)] bg-[var(--panel-soft)] p-0.5 ${
+        compact ? "w-full justify-center" : ""
       }`}
     >
       <button
         type="button"
         onClick={() => onLocaleChange("en")}
-        className={`px-2.5 py-1 text-[12px] rounded ${
-          locale === "en" ? "bg-white text-[#07080C]" : "text-gray-300 hover:text-white"
+        className={`rounded px-2.5 py-1 text-[12px] ${
+          locale === "en" ? "bg-[var(--text-strong)] text-[var(--bg-base)]" : "text-[var(--text-muted)] hover:text-[var(--text-strong)]"
         } transition-colors`}
       >
         {labels.en}
@@ -81,8 +38,8 @@ function LocaleSwitch({
       <button
         type="button"
         onClick={() => onLocaleChange("zh")}
-        className={`px-2.5 py-1 text-[12px] rounded ${
-          locale === "zh" ? "bg-white text-[#07080C]" : "text-gray-300 hover:text-white"
+        className={`rounded px-2.5 py-1 text-[12px] ${
+          locale === "zh" ? "bg-[var(--text-strong)] text-[var(--bg-base)]" : "text-[var(--text-muted)] hover:text-[var(--text-strong)]"
         } transition-colors`}
       >
         {labels.zh}
@@ -93,113 +50,109 @@ function LocaleSwitch({
 
 export function Header({ locale, onLocaleChange }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const copy = copyByLocale[locale];
+  const reduceMotion = useReducedMotion();
+  const copy = landingContent[locale].header;
 
   return (
     <motion.header
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.1 }}
-      className="fixed top-0 left-0 right-0 z-50"
+      initial={reduceMotion ? false : { opacity: 0, y: -8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: "easeOut" }}
+      className="fixed left-0 right-0 top-0 z-50"
     >
       <div
-        className="border-b border-white/[0.08]"
-        style={{ backdropFilter: "blur(16px) saturate(180%)", background: "rgba(6,10,18,0.82)" }}
+        className="border-b border-[var(--line-soft)]"
+        style={{ backdropFilter: "blur(18px) saturate(160%)", background: "rgba(4, 8, 16, 0.76)" }}
       >
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="flex items-center justify-between h-[60px]">
-            <a href="#" className="flex items-center shrink-0 gap-2.5">
-              <span className="w-8 h-8 rounded-[8px] overflow-hidden border border-white/[0.14] bg-[#081022] flex items-center justify-center">
-                <img
-                  src="/branding/starfire-logo.png"
-                  alt="Starfire icon"
-                  className="w-full h-full object-contain"
-                  loading="eager"
-                />
-              </span>
-              <img
-                src="/branding/starfire-text-logo-white.png"
-                alt="Starfire"
-                className="h-6 w-auto object-contain"
-                loading="eager"
-              />
-            </a>
+        <div className="mx-auto flex h-[60px] max-w-[1260px] items-center justify-between px-6">
+          <a href="/" className="flex shrink-0 items-center gap-2.5">
+            <span className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-[8px] border border-[var(--line-strong)] bg-[#091021]">
+              <img src="/branding/starfire-logo.png" alt="Starfire icon" className="h-full w-full object-contain" loading="eager" />
+            </span>
+            <img src="/branding/starfire-text-logo-white.png" alt="Starfire" className="h-[22px] w-auto object-contain md:h-6" loading="eager" />
+          </a>
 
-            <nav className="hidden md:flex items-center gap-1">
-              {copy.nav.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="px-3 py-1.5 text-[13px] text-gray-300 hover:text-white transition-colors rounded-md hover:bg-white/[0.04]"
-                >
-                  {item.label}
-                </a>
-              ))}
-              <a
-                href="#"
-                className="px-3 py-1.5 text-[13px] text-gray-300 hover:text-white transition-colors rounded-md hover:bg-white/[0.04] flex items-center gap-1.5"
-              >
-                <Github className="w-3.5 h-3.5" />
-                {copy.github}
-              </a>
-            </nav>
-
-            <div className="hidden md:flex items-center gap-2">
-              <LocaleSwitch locale={locale} onLocaleChange={onLocaleChange} />
-              <a href="#" className="px-3.5 py-1.5 text-[13px] text-gray-300 hover:text-white transition-colors">
-                {copy.signIn}
-              </a>
-              <a
-                href="#"
-                className="px-3.5 py-1.5 text-[13px] font-medium text-[#07080C] bg-white hover:bg-gray-200 rounded-md transition-colors"
-              >
-                {copy.explore}
-              </a>
-            </div>
-
-            <button
-              className="md:hidden p-1.5 text-gray-300 hover:text-white"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Toggle menu"
-            >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {mobileOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:hidden border-b border-white/[0.04]"
-          style={{ backdropFilter: "blur(16px) saturate(180%)", background: "rgba(7,8,12,0.96)" }}
-        >
-          <div className="px-6 py-4 space-y-2">
-            <LocaleSwitch locale={locale} onLocaleChange={onLocaleChange} compact />
+          <nav className="hidden items-center gap-1 md:flex">
             {copy.nav.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="block px-3 py-2.5 text-[14px] text-gray-200 hover:text-white rounded-md hover:bg-white/[0.04] transition-colors"
-                onClick={() => setMobileOpen(false)}
+                className="rounded-md px-3 py-1.5 text-[13px] text-[var(--text-soft)] transition-colors hover:bg-[var(--panel-soft)] hover:text-[var(--text-strong)]"
               >
                 {item.label}
               </a>
             ))}
             <a
-              href="#"
-              className="block px-3 py-2.5 text-[14px] text-gray-200 hover:text-white rounded-md hover:bg-white/[0.04] transition-colors"
+              href={siteLinks.githubRepo}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[13px] text-[var(--text-soft)] transition-colors hover:bg-[var(--panel-soft)] hover:text-[var(--text-strong)]"
+            >
+              <Github className="h-3.5 w-3.5" />
+              {copy.github}
+            </a>
+          </nav>
+
+          <div className="hidden items-center gap-2 md:flex">
+            <LocaleSwitch locale={locale} onLocaleChange={onLocaleChange} />
+            <a
+              href={siteLinks.architecture}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-md border border-[var(--line-soft)] px-3.5 py-1.5 text-[13px] text-[var(--text-soft)] transition-colors hover:border-[var(--line-strong)] hover:text-[var(--text-strong)]"
+            >
+              {copy.architecture}
+            </a>
+          </div>
+
+          <button
+            className="p-1.5 text-[var(--text-muted)] transition-colors hover:text-[var(--text-strong)] md:hidden"
+            onClick={() => setMobileOpen((value) => !value)}
+            aria-label="Toggle navigation menu"
+          >
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+      </div>
+
+      {mobileOpen && (
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: -6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+          className="border-b border-[var(--line-soft)] md:hidden"
+          style={{ backdropFilter: "blur(16px) saturate(140%)", background: "rgba(4, 8, 16, 0.94)" }}
+        >
+          <div className="space-y-2 px-6 py-4">
+            <LocaleSwitch locale={locale} onLocaleChange={onLocaleChange} compact />
+            {copy.nav.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                className="block rounded-md px-3 py-2.5 text-[14px] text-[var(--text-soft)] transition-colors hover:bg-[var(--panel-soft)] hover:text-[var(--text-strong)]"
+              >
+                {item.label}
+              </a>
+            ))}
+            <a
+              href={siteLinks.githubRepo}
+              target="_blank"
+              rel="noreferrer"
+              className="block rounded-md px-3 py-2.5 text-[14px] text-[var(--text-soft)] transition-colors hover:bg-[var(--panel-soft)] hover:text-[var(--text-strong)]"
               onClick={() => setMobileOpen(false)}
             >
               {copy.github}
             </a>
-            <div className="pt-3 border-t border-white/[0.06]">
+            <div className="border-t border-[var(--line-soft)] pt-3">
               <a
-                href="#"
-                className="block w-full text-center px-3.5 py-2.5 text-[14px] font-medium text-[#07080C] bg-white rounded-md"
+                href={siteLinks.architecture}
+                target="_blank"
+                rel="noreferrer"
+                className="block w-full rounded-md border border-[var(--line-strong)] px-3.5 py-2.5 text-center text-[14px] font-medium text-[var(--text-strong)]"
+                onClick={() => setMobileOpen(false)}
               >
-                {copy.explore}
+                {copy.architecture}
               </a>
             </div>
           </div>

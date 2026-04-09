@@ -1,10 +1,11 @@
 # Starfire Landing Page
 
-Production-ready landing page workspace for Starfire, isolated from the rest of the monorepo.
+Standalone Vite workspace for the Starfire public landing page.
 
-This folder is intentionally self-contained and should be the **only** area touched for landing-page iteration.
+This project is intentionally isolated from the main Starfire monorepo implementation.  
+All landing iterations should stay inside `Starfirelandingpage-main/**`.
 
-## Quick Start
+## Run
 
 ```bash
 cd Starfirelandingpage-main
@@ -20,31 +21,57 @@ Open `http://localhost:5173`.
 npm run build
 ```
 
+## Current IA
+
+1. `Header`
+2. `Hero`
+3. `WhyNow`
+4. `Moats`
+5. `CapabilityProof`
+6. `UseCases`
+7. `FinalCTA`
+8. `Footer`
+
+## Content System
+
+All bilingual copy and external links are centralized in:
+
+- `src/app/content.ts`
+
+This file owns:
+
+- `siteLinks` (GitHub, README, PRD, Architecture)
+- EN/ZH section content
+- Proof cards and use-case data
+
+Components should consume this content layer instead of hardcoding page copy.
+
+## Styling System
+
+- Tailwind v4 utilities + custom tokens in `src/styles/theme.css`
+- Typography:
+  - Display: `Space Grotesk`
+  - Body: `Manrope`
+  - Mono: `JetBrains Mono`
+- Motion uses `motion/react` and respects `prefers-reduced-motion`.
+
 ## Directory Guide
 
 ```text
 Starfirelandingpage-main/
-├─ public/branding/                 # Logo assets (icon + white text logo)
-├─ src/app/App.tsx                  # Page assembly
-├─ src/app/components/              # Section components
-│  ├─ Hero.tsx
-│  ├─ MarketMomentum.tsx
-│  ├─ UseCases.tsx
-│  ├─ MemoryArchitecture.tsx
-│  ├─ Enterprise.tsx
-│  ├─ FinalCTA.tsx
-│  ├─ Header.tsx
-│  ├─ Footer.tsx
-│  ├─ RotatingText.tsx
-│  └─ background/
-│     ├─ LandingBackground.tsx
-│     ├─ ShapeGrid.tsx
-│     └─ ShapeGrid.css
-└─ src/styles/                      # Tailwind + theme overrides
+├─ public/branding/                # Starfire branding assets
+├─ src/app/
+│  ├─ App.tsx                      # Page composition
+│  ├─ content.ts                   # Typed bilingual content + links
+│  ├─ i18n.ts                      # Locale and localStorage key
+│  └─ components/                  # Section components
+└─ src/styles/                     # Tailwind + tokens + fonts
 ```
 
-## Team Handoff
+## Quality Checklist
 
-Detailed continuation notes:
+- `npm run build` passes
+- No `href="#"` placeholder links
+- No external placeholder media URLs
+- No hardcoded marketing copy outside `content.ts` (except minor technical labels)
 
-- [HANDOFF.md](./HANDOFF.md)
