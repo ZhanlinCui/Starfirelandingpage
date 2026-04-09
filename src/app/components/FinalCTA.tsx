@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { Locale } from "../i18n";
 import { finalCtaContent, fonts } from "../content";
 
@@ -12,28 +12,7 @@ export function FinalCTA({ locale }: FinalCTAProps) {
 
   return (
     <section className="py-24 lg:py-32 px-6 bg-[#0f192b] border-t border-white/[0.08]">
-      <div className="max-w-[980px] mx-auto space-y-8">
-        {/* ── Vision Band ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5 }}
-          className="rounded-2xl border border-violet-500/[0.15] bg-[#12172a] p-5 md:p-6"
-        >
-          <div className="flex items-center gap-2 mb-3">
-            <Sparkles className="w-4 h-4 text-violet-400/70" />
-            <span
-              className="text-[11px] tracking-[0.06em] uppercase text-violet-300/80"
-              style={{ fontFamily: fonts.mono }}
-            >
-              {copy.vision.label}
-            </span>
-          </div>
-          <p className="text-[15px] leading-[1.72] text-slate-300/90 italic">{copy.vision.statement}</p>
-        </motion.div>
-
-        {/* ── Main CTA Card ── */}
+      <div className="max-w-[980px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

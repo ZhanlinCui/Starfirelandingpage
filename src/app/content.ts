@@ -22,6 +22,7 @@ export const sectionIds = {
   useCases: "use-cases",
   memory: "memory",
   platform: "platform",
+  vision: "vision",
 } as const;
 
 // ═══════════════════════════════════════════════════════════
@@ -41,6 +42,7 @@ export const headerContent: Record<Locale, HeaderContent> = {
       { label: "Use Cases", href: `#${sectionIds.useCases}` },
       { label: "Memory", href: `#${sectionIds.memory}` },
       { label: "Platform", href: `#${sectionIds.platform}` },
+      { label: "Vision", href: `#${sectionIds.vision}` },
     ],
     github: "GitHub",
     cta: "View on GitHub",
@@ -52,6 +54,7 @@ export const headerContent: Record<Locale, HeaderContent> = {
       { label: "应用场景", href: `#${sectionIds.useCases}` },
       { label: "记忆架构", href: `#${sectionIds.memory}` },
       { label: "平台能力", href: `#${sectionIds.platform}` },
+      { label: "愿景", href: `#${sectionIds.vision}` },
     ],
     github: "GitHub",
     cta: "查看 GitHub",
@@ -346,6 +349,11 @@ export const marketMomentumContent: Record<Locale, MarketMomentumContent> = {
 // ═══════════════════════════════════════════════════════════
 //  USE CASES
 // ═══════════════════════════════════════════════════════════
+export type ShowcaseSlide = {
+  src: string;
+  alt: string;
+};
+
 export type Scenario = {
   key: string;
   tag: string;
@@ -353,6 +361,8 @@ export type Scenario = {
   description: string;
   bullets: string[];
   capabilities: string[];
+  /** Image/GIF slides for the album carousel. Empty src = placeholder. */
+  slides: ShowcaseSlide[];
 };
 
 export type UseCasesContent = {
@@ -449,6 +459,11 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
           "DeepAgents adapter for plan-first reasoning",
         ],
         capabilities: ["HMA", "DeepAgents", "Langfuse", "A2A"],
+        slides: [
+          { src: "", alt: "Canvas: research team topology with 3 sibling analysts" },
+          { src: "", alt: "Memory panel showing LOCAL scope isolation" },
+          { src: "", alt: "Langfuse trace chain across research workspaces" },
+        ],
       },
       {
         key: "engineering",
@@ -463,6 +478,11 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
           "Recursive team expansion without breaking upstream",
         ],
         capabilities: ["6 adapters", "A2A", "HITL", "team expansion"],
+        slides: [
+          { src: "", alt: "Canvas: engineering team with 4 heterogeneous runtime agents" },
+          { src: "", alt: "Drag-to-nest team expansion in action" },
+          { src: "", alt: "HITL approval dialog for deploy action" },
+        ],
       },
       {
         key: "automation",
@@ -477,6 +497,11 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
           "Global secrets with per-workspace override",
         ],
         capabilities: ["RBAC", "approvals", "audit", "secrets"],
+        slides: [
+          { src: "", alt: "Config panel with RBAC roles and compliance settings" },
+          { src: "", alt: "Activity log stream with approval events" },
+          { src: "", alt: "Secrets management with global inheritance" },
+        ],
       },
       {
         key: "executive",
@@ -491,6 +516,11 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
           "Pause / resume / restart lifecycle controls",
         ],
         capabilities: ["Canvas", "WebSocket", "health sweep", "lifecycle"],
+        slides: [
+          { src: "", alt: "Full Canvas overview with multi-team topology" },
+          { src: "", alt: "10-tab operations panel: Chat + Activity + Terminal" },
+          { src: "", alt: "Health sweep dashboard with real-time status" },
+        ],
       },
     ],
   },
@@ -519,6 +549,11 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
           "DeepAgents 适配器支持计划优先推理",
         ],
         capabilities: ["HMA", "DeepAgents", "Langfuse", "A2A"],
+        slides: [
+          { src: "", alt: "Canvas: 研究团队拓扑，3 个同级分析师" },
+          { src: "", alt: "记忆面板展示 LOCAL 作用域隔离" },
+          { src: "", alt: "跨研究工作空间的 Langfuse 追踪链" },
+        ],
       },
       {
         key: "engineering",
@@ -533,6 +568,11 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
           "递归团队扩展不破坏上游集成",
         ],
         capabilities: ["6 适配器", "A2A", "HITL", "团队扩展"],
+        slides: [
+          { src: "", alt: "Canvas: 4 个异构运行时 Agent 的工程团队" },
+          { src: "", alt: "拖拽嵌套实现团队扩展" },
+          { src: "", alt: "部署操作的人工审批对话框" },
+        ],
       },
       {
         key: "automation",
@@ -547,6 +587,11 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
           "全局密钥 + 工作空间级覆盖",
         ],
         capabilities: ["RBAC", "审批", "审计", "密钥管理"],
+        slides: [
+          { src: "", alt: "配置面板：RBAC 角色与合规设置" },
+          { src: "", alt: "包含审批事件的活动日志流" },
+          { src: "", alt: "全局继承的密钥管理" },
+        ],
       },
       {
         key: "executive",
@@ -561,6 +606,11 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
           "暂停 / 恢复 / 重启生命周期控制",
         ],
         capabilities: ["Canvas", "WebSocket", "健康巡检", "生命周期"],
+        slides: [
+          { src: "", alt: "完整 Canvas 概览：多团队拓扑" },
+          { src: "", alt: "10 标签操作面板：聊天 + 活动 + 终端" },
+          { src: "", alt: "实时状态的健康巡检面板" },
+        ],
       },
     ],
   },
@@ -925,6 +975,133 @@ export const finalCtaContent: Record<Locale, FinalCTAContent> = {
       { label: "GitHub", href: siteLinks.github, primary: false },
       { label: "README", href: siteLinks.readme, primary: false },
     ],
+  },
+};
+
+// ═══════════════════════════════════════════════════════════
+//  PHYSICAL VISION  →  "Beyond Software"
+// ═══════════════════════════════════════════════════════════
+export type VisionPhase = {
+  era: string;
+  title: string;
+  description: string;
+  nodes: string[];
+  status: "live" | "building" | "horizon";
+};
+
+export type PhysicalVisionContent = {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  phases: VisionPhase[];
+  closingLine: string;
+};
+
+export const physicalVisionContent: Record<Locale, PhysicalVisionContent> = {
+  en: {
+    eyebrow: "Where This Goes",
+    title: "From Agent Teams to Robot Teams",
+    subtitle: "The same organizational layer that governs software agents today will govern physical systems tomorrow.",
+    description:
+      "Starfire's workspace abstraction is runtime-agnostic by design. A workspace is a role with an A2A interface — not an LLM with a prompt. The same hierarchy, memory boundaries, approval chains, and governance that organize AI agents in containers today can organize any autonomous system that speaks A2A.",
+    phases: [
+      {
+        era: "NOW",
+        title: "Software Agent Teams",
+        description:
+          "LLM agents in Docker containers, coordinated through A2A, governed by hierarchy. Six runtime adapters. Hierarchical memory. Production-grade observability.",
+        nodes: [
+          "LangGraph orchestration",
+          "Claude Code engineering",
+          "CrewAI role crews",
+          "AutoGen conversations",
+          "DeepAgents planning",
+          "OpenClaw CLI sessions",
+        ],
+        status: "live",
+      },
+      {
+        era: "NEXT",
+        title: "Terminal + Device Agents",
+        description:
+          "Same workspaces, same governance — extended to terminal bots, browser automation agents, and device-connected systems. The org chart scales to any runtime that implements A2A.",
+        nodes: [
+          "Terminal automation bots",
+          "Browser agent fleets",
+          "IoT device controllers",
+          "CI/CD pipeline agents",
+        ],
+        status: "building",
+      },
+      {
+        era: "HORIZON",
+        title: "Embodied Robot Teams",
+        description:
+          "When autonomous robots need organizational structure — hierarchy, memory isolation, approval chains, escalation paths — the infrastructure already exists. Starfire becomes the control plane for physical-world agent teams.",
+        nodes: [
+          "Warehouse robot fleets",
+          "Autonomous vehicle coordination",
+          "Manufacturing cell orchestration",
+          "Field inspection teams",
+        ],
+        status: "horizon",
+      },
+    ],
+    closingLine:
+      "The workspace is the role. The protocol is A2A. The boundary between digital and physical disappears — the organizational layer remains.",
+  },
+  zh: {
+    eyebrow: "未来方向",
+    title: "从 Agent 团队到机器人团队",
+    subtitle: "今天治理软件 Agent 的组织层，明天将治理物理世界的系统。",
+    description:
+      "Starfire 的工作空间抽象在设计上与运行时无关。工作空间是一个拥有 A2A 接口的角色——而不是一个带提示词的 LLM。今天在容器中组织 AI Agent 的层级、记忆边界、审批链和治理体系，同样可以组织任何实现了 A2A 协议的自治系统。",
+    phases: [
+      {
+        era: "现在",
+        title: "软件 Agent 团队",
+        description:
+          "Docker 容器中的 LLM Agent，通过 A2A 协调，按层级治理。六种运行时适配器、分层记忆、生产级可观测性。",
+        nodes: [
+          "LangGraph 编排",
+          "Claude Code 工程",
+          "CrewAI 角色协作",
+          "AutoGen 对话",
+          "DeepAgents 规划",
+          "OpenClaw CLI 会话",
+        ],
+        status: "live",
+      },
+      {
+        era: "下一步",
+        title: "终端 + 设备 Agent",
+        description:
+          "同样的工作空间，同样的治理——扩展到终端机器人、浏览器自动化 Agent 和设备连接系统。组织图可扩展到任何实现 A2A 的运行时。",
+        nodes: [
+          "终端自动化机器人",
+          "浏览器 Agent 集群",
+          "IoT 设备控制器",
+          "CI/CD 流水线 Agent",
+        ],
+        status: "building",
+      },
+      {
+        era: "远景",
+        title: "具身机器人团队",
+        description:
+          "当自主机器人需要组织结构——层级、记忆隔离、审批链、升级路径——基础设施已经就位。Starfire 将成为物理世界 Agent 团队的控制平面。",
+        nodes: [
+          "仓储机器人编队",
+          "自动驾驶车辆协调",
+          "制造单元编排",
+          "现场巡检团队",
+        ],
+        status: "horizon",
+      },
+    ],
+    closingLine:
+      "工作空间即角色。协议是 A2A。数字与物理的边界消失——组织层永存。",
   },
 };
 

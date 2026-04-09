@@ -1,6 +1,8 @@
 import { motion } from "motion/react";
 import { useState } from "react";
+import { Code2, Images } from "lucide-react";
 import RotatingText from "./RotatingText";
+import { AlbumShowcase } from "./AlbumShowcase";
 import type { Locale } from "../i18n";
 import { useCasesContent, scenarioCodePanels, sectionIds, fonts } from "../content";
 
@@ -34,6 +36,7 @@ function CodePanel({ code }: { code: string }) {
 export function UseCases({ locale }: UseCasesProps) {
   const copy = useCasesContent[locale];
   const [activeKey, setActiveKey] = useState(copy.scenarios[0].key);
+  const [viewMode, setViewMode] = useState<"screenshots" | "code">("screenshots");
   const active = copy.scenarios.find((s) => s.key === activeKey) ?? copy.scenarios[0];
   const codePanel = scenarioCodePanels[active.key] ?? "";
 
@@ -134,7 +137,45 @@ export function UseCases({ locale }: UseCasesProps) {
               </ul>
             </div>
 
-            <CodePanel code={codePanel} />
+            {/* Right panel: screenshots carousel or code view */}
+            <div>
+              {/* View mode toggle */}
+              <div className="flex items-center justify-end gap-1.5 mb-3">
+                <button
+                  type="button"
+                  onClick={() => setViewMode("screenshots")}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[11px] transition-colors ${
+                    viewMode === "screenshots"
+                      ? "bg-white/[0.08] text-white border border-white/[0.12]"
+                      : "text-gray-500 hover:text-gray-300"
+                  }`}
+                >
+                  <Images className="w-3 h-3" />
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setViewMode("code")}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[11px] transition-colors ${
+                    viewMode === "code"
+                      ? "bg-white/[0.08] text-white border border-white/[0.12]"
+                      : "text-gray-500 hover:text-gray-300"
+                  }`}
+                >
+                  <Code2 className="w-3 h-3" />
+                  Config
+                </button>
+              </div>
+
+              {viewMode === "screenshots" ? (
+                <AlbumShowcase
+                  slides={active.slides}
+                  placeholderLabel={locale === "zh" ? "产品截图即将上线" : "Product Screenshot Coming"}
+                />
+              ) : (
+                <CodePanel code={codePanel} />
+              )}
+            </div>
           </div>
         </motion.article>
       </div>

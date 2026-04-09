@@ -6,6 +6,7 @@ import { UseCases } from "./components/UseCases";
 import { MemoryArchitecture } from "./components/MemoryArchitecture";
 import { Enterprise } from "./components/Enterprise";
 import { FinalCTA } from "./components/FinalCTA";
+import { PhysicalVision } from "./components/PhysicalVision";
 import { Footer } from "./components/Footer";
 import { LandingBackground } from "./components/background/LandingBackground";
 import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY, type Locale } from "./i18n";
@@ -43,6 +44,7 @@ export default function App() {
           <UseCases locale={locale} />
           <MemoryArchitecture locale={locale} />
           <Enterprise locale={locale} />
+          <PhysicalVision locale={locale} />
           <FinalCTA locale={locale} />
         </main>
         <Footer locale={locale} />
