@@ -2,11 +2,11 @@ import type { Locale } from "./i18n";
 
 // ── Site Links (real, verifiable URLs) ──────────────────────
 export const siteLinks = {
-  github: "https://github.com/Starfire-AI/agent-team",
+  github: "https://github.com/ZhanlinCui/Starfire-AgentTeam",
   architecture:
-    "https://github.com/Starfire-AI/agent-team/tree/main/docs/architecture",
-  readme: "https://github.com/Starfire-AI/agent-team#readme",
-  docs: "https://github.com/Starfire-AI/agent-team/tree/main/docs",
+    "https://github.com/ZhanlinCui/Starfire-AgentTeam/tree/main/docs/architecture",
+  readme: "https://github.com/ZhanlinCui/Starfire-AgentTeam#readme",
+  docs: "https://github.com/ZhanlinCui/Starfire-AgentTeam/tree/main/docs",
 } as const;
 
 // ── Fonts ───────────────────────────────────────────────────
