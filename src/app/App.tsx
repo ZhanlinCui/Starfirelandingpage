@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { Header } from "./components/Header";
-import { Hero } from "./components/Hero";
-import { MarketMomentum } from "./components/MarketMomentum";
-import { UseCases } from "./components/UseCases";
-import { MemoryArchitecture } from "./components/MemoryArchitecture";
-import { Enterprise } from "./components/Enterprise";
+import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY, type Locale } from "./i18n";
+import { CapabilityProof } from "./components/CapabilityProof";
 import { FinalCTA } from "./components/FinalCTA";
 import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
+import { Hero } from "./components/Hero";
+import { Moats } from "./components/Moats";
+import { UseCases } from "./components/UseCases";
+import { WhyNow } from "./components/WhyNow";
 import { LandingBackground } from "./components/background/LandingBackground";
-import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY, type Locale } from "./i18n";
 
 export default function App() {
   const [locale, setLocale] = useState<Locale>(DEFAULT_LOCALE);
@@ -26,22 +26,16 @@ export default function App() {
   }, [locale]);
 
   return (
-    <div
-      className="relative min-h-screen text-gray-100"
-      style={{
-        fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-        background: "linear-gradient(180deg, #05070f 0%, #0a101d 42%, #111a2b 100%)",
-      }}
-    >
+    <div className="relative min-h-screen bg-[var(--bg-base)] text-[var(--text-strong)]">
       <LandingBackground />
       <div className="relative z-10">
         <Header locale={locale} onLocaleChange={setLocale} />
         <main>
           <Hero locale={locale} />
-          <MarketMomentum locale={locale} />
+          <WhyNow locale={locale} />
+          <Moats locale={locale} />
+          <CapabilityProof locale={locale} />
           <UseCases locale={locale} />
-          <MemoryArchitecture locale={locale} />
-          <Enterprise locale={locale} />
           <FinalCTA locale={locale} />
         </main>
         <Footer locale={locale} />
@@ -49,3 +43,4 @@ export default function App() {
     </div>
   );
 }
+

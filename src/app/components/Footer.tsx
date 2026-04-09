@@ -1,95 +1,58 @@
 import { Github } from "lucide-react";
+import { siteLinks, landingContent } from "../content";
 import type { Locale } from "../i18n";
 
 type FooterProps = {
   locale: Locale;
 };
 
-const copyByLocale = {
-  en: {
-    brandDescription: "The organizational operating system for AI agents.",
-    sections: {
-      product: { title: "Product", items: ["Platform", "Agent Teams", "Architecture", "Changelog"] },
-      resources: { title: "Resources", items: ["Documentation", "API Reference", "Guides", "Community"] },
-      company: { title: "Company", items: ["About", "Blog", "Careers", "Contact"] },
-      legal: { title: "Legal", items: ["Privacy", "Terms", "Security"] },
-    },
-    copyright: "© 2026 Starfire Technologies, Inc.",
-    github: "GitHub",
-  },
-  zh: {
-    brandDescription: "面向 AI Agent 团队的组织操作系统。",
-    sections: {
-      product: { title: "产品", items: ["平台", "Agent 团队", "架构", "更新日志"] },
-      resources: { title: "资源", items: ["文档中心", "API 参考", "使用指南", "社区"] },
-      company: { title: "公司", items: ["关于我们", "博客", "招聘", "联系我们"] },
-      legal: { title: "法务", items: ["隐私政策", "服务条款", "安全"] },
-    },
-    copyright: "© 2026 Starfire Technologies, Inc.",
-    github: "GitHub",
-  },
-} satisfies Record<
-  Locale,
-  {
-    brandDescription: string;
-    sections: {
-      product: { title: string; items: string[] };
-      resources: { title: string; items: string[] };
-      company: { title: string; items: string[] };
-      legal: { title: string; items: string[] };
-    };
-    copyright: string;
-    github: string;
-  }
->;
-
 export function Footer({ locale }: FooterProps) {
-  const copy = copyByLocale[locale];
-  const sectionList = [copy.sections.product, copy.sections.resources, copy.sections.company, copy.sections.legal];
+  const copy = landingContent[locale].footer;
 
   return (
-    <footer className="border-t border-white/[0.08] py-12 px-6 bg-[#0b1424]">
-      <div className="max-w-[1200px] mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
-          <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="w-7 h-7 rounded-[7px] overflow-hidden border border-white/[0.14] bg-[#081022] flex items-center justify-center">
-                <img
-                  src="/branding/starfire-logo.png"
-                  alt="Starfire logo"
-                  className="w-full h-full object-contain"
-                  loading="lazy"
-                />
+    <footer className="border-t border-[var(--line-soft)] bg-[var(--bg-elevated)] px-6 py-10">
+      <div className="mx-auto max-w-[1260px]">
+        <div className="grid gap-8 md:grid-cols-[1.2fr_2fr]">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="flex h-7 w-7 items-center justify-center overflow-hidden rounded-[7px] border border-[var(--line-strong)] bg-[#081022]">
+                <img src="/branding/starfire-logo.png" alt="Starfire icon" className="h-full w-full object-contain" loading="lazy" />
               </span>
-              <span className="text-[14px] font-semibold text-white tracking-[-0.01em]">Starfire</span>
+              <span className="font-display text-[15px] text-[var(--text-strong)]">Starfire</span>
             </div>
-            <p className="text-[12px] text-gray-500 leading-[1.6] max-w-[200px]">{copy.brandDescription}</p>
+            <p className="mt-3 max-w-[420px] text-[13px] leading-[1.72] text-[var(--text-muted)]">{copy.description}</p>
+            <a
+              href={siteLinks.githubRepo}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 inline-flex items-center gap-2 text-[13px] text-[var(--text-soft)] transition-colors hover:text-[var(--text-strong)]"
+            >
+              <Github className="h-4 w-4" />
+              GitHub
+            </a>
           </div>
 
-          {sectionList.map((section) => (
-            <div key={section.title}>
-              <h4 className="text-[12px] font-medium text-gray-300 mb-4">{section.title}</h4>
-              <ul className="space-y-2.5">
-                {section.items.map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-[13px] text-gray-400 hover:text-gray-200 transition-colors">
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {copy.groups.map((group) => (
+              <div key={group.title}>
+                <h4 className="font-display text-[13px] text-[var(--text-strong)]">{group.title}</h4>
+                <ul className="mt-3 space-y-2.5">
+                  {group.links.map((link) => (
+                    <li key={link.label}>
+                      <a href={link.href} className="text-[12px] text-[var(--text-muted)] transition-colors hover:text-[var(--text-strong)]">
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="pt-8 border-t border-white/[0.04] flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="text-[12px] text-gray-500">{copy.copyright}</span>
-          <a href="#" className="flex items-center gap-1.5 text-[12px] text-gray-400 hover:text-gray-200 transition-colors">
-            <Github className="w-3.5 h-3.5" />
-            {copy.github}
-          </a>
-        </div>
+        <p className="mt-8 border-t border-[var(--line-soft)] pt-6 text-[12px] text-[var(--text-muted)]">{copy.copyright}</p>
       </div>
     </footer>
   );
 }
+
