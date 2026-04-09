@@ -14,134 +14,12 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import type { Locale } from "../i18n";
+import { heroVisualContent, fonts } from "../content";
 
-const mono = { fontFamily: "'JetBrains Mono', monospace" };
+const mono = { fontFamily: fonts.mono };
 
 type HeroVisualProps = {
   locale: Locale;
-};
-
-type VisualCopy = {
-  topologyTitle: string;
-  tenant: string;
-  live: string;
-  rootTitle: string;
-  rootMeta: string;
-  badges: {
-    trace: string;
-    rbac: string;
-    agents: string;
-  };
-  engineering: {
-    label: string;
-    role: string;
-    scoped: string;
-    count: string;
-    escalation: string;
-    subAgents: Array<{ label: string; model: string; runtime: string; status: "active" | "idle" | "escalated" }>;
-  };
-  research: {
-    label: string;
-    role: string;
-    isolated: string;
-    overlay: string;
-  };
-  operations: {
-    label: string;
-    role: string;
-    onDemand: string;
-    overlay: string;
-  };
-  telemetry: Array<{ label: string; value: string; dot: string }>;
-};
-
-const copyByLocale: Record<Locale, VisualCopy> = {
-  en: {
-    topologyTitle: "Topology / Production",
-    tenant: "acme-corp",
-    live: "LIVE",
-    rootTitle: "Acme Corporation",
-    rootMeta: "root-workspace · gpt-4o orchestrator",
-    badges: {
-      trace: "full-trace",
-      rbac: "rbac",
-      agents: "12 agents",
-    },
-    engineering: {
-      label: "Engineering",
-      role: "team-workspace",
-      scoped: "scoped",
-      count: "4",
-      escalation: "Escalation → Engineering Lead: deploy approval pending",
-      subAgents: [
-        { label: "Frontend Agent", model: "gpt-4o", runtime: "browser", status: "active" },
-        { label: "Backend Agent", model: "claude-3.5", runtime: "docker", status: "active" },
-        { label: "Infra Agent", model: "gpt-4o", runtime: "docker", status: "idle" },
-        { label: "QA Agent", model: "gpt-4o-mini", runtime: "sandbox", status: "escalated" },
-      ],
-    },
-    research: {
-      label: "Research",
-      role: "team-workspace",
-      isolated: "isolated",
-      overlay: "memory: sandboxed",
-    },
-    operations: {
-      label: "Operations",
-      role: "team-workspace",
-      onDemand: "on-demand",
-      overlay: "tier: standard",
-    },
-    telemetry: [
-      { label: "comms", value: "hierarchy-routed", dot: "bg-sky-400/40" },
-      { label: "memory", value: "topology-scoped", dot: "bg-violet-400/40" },
-      { label: "trace", value: "langfuse + otel", dot: "bg-emerald-400/40" },
-      { label: "runtime", value: "docker / browser / sandbox", dot: "bg-amber-400/40" },
-    ],
-  },
-  zh: {
-    topologyTitle: "拓扑 / 生产环境",
-    tenant: "acme-corp",
-    live: "在线",
-    rootTitle: "Acme 企业组织",
-    rootMeta: "root-workspace · gpt-4o 协调器",
-    badges: {
-      trace: "全链路追踪",
-      rbac: "角色权限",
-      agents: "12 个 Agent",
-    },
-    engineering: {
-      label: "工程团队",
-      role: "团队工作空间",
-      scoped: "作用域隔离",
-      count: "4",
-      escalation: "升级事件 → 工程负责人：发布审批待处理",
-      subAgents: [
-        { label: "前端 Agent", model: "gpt-4o", runtime: "browser", status: "active" },
-        { label: "后端 Agent", model: "claude-3.5", runtime: "docker", status: "active" },
-        { label: "基础设施 Agent", model: "gpt-4o", runtime: "docker", status: "idle" },
-        { label: "测试 Agent", model: "gpt-4o-mini", runtime: "sandbox", status: "escalated" },
-      ],
-    },
-    research: {
-      label: "研究团队",
-      role: "团队工作空间",
-      isolated: "隔离",
-      overlay: "记忆：沙箱隔离",
-    },
-    operations: {
-      label: "运营团队",
-      role: "团队工作空间",
-      onDemand: "按需执行",
-      overlay: "运行层级：标准",
-    },
-    telemetry: [
-      { label: "通信", value: "按层级路由", dot: "bg-sky-400/40" },
-      { label: "记忆", value: "拓扑作用域", dot: "bg-violet-400/40" },
-      { label: "追踪", value: "langfuse + otel", dot: "bg-emerald-400/40" },
-      { label: "运行时", value: "docker / browser / sandbox", dot: "bg-amber-400/40" },
-    ],
-  },
 };
 
 function NodeBadge({ children }: { children: React.ReactNode }) {
@@ -200,7 +78,7 @@ function SubAgentRow({
       <div className="flex items-center gap-2">
         {runtime && (
           <span
-            className="text-[8px] text-gray-600 px-1.5 py-0.5 rounded bg-white/[0.02] border border-white/[0.03]"
+            className="text-[8px] text-cyan-400/70 px-1.5 py-0.5 rounded bg-cyan-500/[0.06] border border-cyan-500/[0.1]"
             style={mono}
           >
             {runtime}
@@ -303,7 +181,7 @@ function TeamNode({
 
 export function HeroVisual({ locale }: HeroVisualProps) {
   const [expanded, setExpanded] = useState(true);
-  const copy = copyByLocale[locale];
+  const copy = heroVisualContent[locale];
 
   return (
     <div className="relative w-full rounded-xl overflow-hidden border border-white/[0.07]" style={{ background: "#090B10" }}>
@@ -396,7 +274,7 @@ export function HeroVisual({ locale }: HeroVisualProps) {
               badges={
                 <>
                   <NodeBadge>
-                    <Brain className="w-2.5 h-2.5" /> {copy.engineering.scoped}
+                    <Brain className="w-2.5 h-2.5" /> {copy.engineering.adapter}
                   </NodeBadge>
                   <NodeBadge>
                     <GitBranch className="w-2.5 h-2.5" /> {copy.engineering.count}
@@ -436,7 +314,7 @@ export function HeroVisual({ locale }: HeroVisualProps) {
               delay={0.5}
               badges={
                 <NodeBadge>
-                  <Lock className="w-2.5 h-2.5" /> {copy.research.isolated}
+                  <Lock className="w-2.5 h-2.5" /> {copy.research.adapter}
                 </NodeBadge>
               }
               overlaySignal={
@@ -457,7 +335,7 @@ export function HeroVisual({ locale }: HeroVisualProps) {
               delay={0.6}
               badges={
                 <NodeBadge>
-                  <Zap className="w-2.5 h-2.5" /> {copy.operations.onDemand}
+                  <Zap className="w-2.5 h-2.5" /> {copy.operations.adapter}
                 </NodeBadge>
               }
               overlaySignal={
@@ -494,4 +372,3 @@ export function HeroVisual({ locale }: HeroVisualProps) {
     </div>
   );
 }
-

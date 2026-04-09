@@ -9,6 +9,7 @@ import { FinalCTA } from "./components/FinalCTA";
 import { Footer } from "./components/Footer";
 import { LandingBackground } from "./components/background/LandingBackground";
 import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY, type Locale } from "./i18n";
+import { fonts } from "./content";
 
 export default function App() {
   const [locale, setLocale] = useState<Locale>(DEFAULT_LOCALE);
@@ -29,7 +30,7 @@ export default function App() {
     <div
       className="relative min-h-screen text-gray-100"
       style={{
-        fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
+        fontFamily: fonts.body,
         background: "linear-gradient(180deg, #05070f 0%, #0a101d 42%, #111a2b 100%)",
       }}
     >

@@ -2,54 +2,11 @@ import { motion } from "motion/react";
 import { Github, Menu, X } from "lucide-react";
 import { useState } from "react";
 import type { Locale } from "../i18n";
+import { headerContent, siteLinks, fonts } from "../content";
 
 type HeaderProps = {
   locale: Locale;
   onLocaleChange: (locale: Locale) => void;
-};
-
-type HeaderCopy = {
-  nav: Array<{ label: string; href: string }>;
-  github: string;
-  signIn: string;
-  explore: string;
-  language: {
-    en: string;
-    zh: string;
-  };
-};
-
-const copyByLocale: Record<Locale, HeaderCopy> = {
-  en: {
-    nav: [
-      { label: "Home", href: "#" },
-      { label: "Scenarios", href: "#scenarios" },
-      { label: "Advantages", href: "#advantages" },
-      { label: "Docs", href: "#docs" },
-    ],
-    github: "GitHub",
-    signIn: "Sign in",
-    explore: "Explore Platform",
-    language: {
-      en: "EN",
-      zh: "中文",
-    },
-  },
-  zh: {
-    nav: [
-      { label: "首页", href: "#" },
-      { label: "应用场景", href: "#scenarios" },
-      { label: "产品优势", href: "#advantages" },
-      { label: "文档", href: "#docs" },
-    ],
-    github: "GitHub",
-    signIn: "登录",
-    explore: "探索平台",
-    language: {
-      en: "EN",
-      zh: "中文",
-    },
-  },
 };
 
 function LocaleSwitch({
@@ -61,7 +18,7 @@ function LocaleSwitch({
   onLocaleChange: (locale: Locale) => void;
   compact?: boolean;
 }) {
-  const labels = copyByLocale[locale].language;
+  const labels = headerContent[locale].language;
 
   return (
     <div
@@ -93,7 +50,7 @@ function LocaleSwitch({
 
 export function Header({ locale, onLocaleChange }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const copy = copyByLocale[locale];
+  const copy = headerContent[locale];
 
   return (
     <motion.header
@@ -108,7 +65,7 @@ export function Header({ locale, onLocaleChange }: HeaderProps) {
       >
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="flex items-center justify-between h-[60px]">
-            <a href="#" className="flex items-center shrink-0 gap-2.5">
+            <a href="#top" className="flex items-center shrink-0 gap-2.5">
               <span className="w-8 h-8 rounded-[8px] overflow-hidden border border-white/[0.14] bg-[#081022] flex items-center justify-center">
                 <img
                   src="/branding/starfire-logo.png"
@@ -125,7 +82,7 @@ export function Header({ locale, onLocaleChange }: HeaderProps) {
               />
             </a>
 
-            <nav className="hidden md:flex items-center gap-1">
+            <nav className="hidden md:flex items-center gap-1" style={{ fontFamily: fonts.body }}>
               {copy.nav.map((item) => (
                 <a
                   key={item.label}
@@ -136,7 +93,9 @@ export function Header({ locale, onLocaleChange }: HeaderProps) {
                 </a>
               ))}
               <a
-                href="#"
+                href={siteLinks.github}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-3 py-1.5 text-[13px] text-gray-300 hover:text-white transition-colors rounded-md hover:bg-white/[0.04] flex items-center gap-1.5"
               >
                 <Github className="w-3.5 h-3.5" />
@@ -146,14 +105,14 @@ export function Header({ locale, onLocaleChange }: HeaderProps) {
 
             <div className="hidden md:flex items-center gap-2">
               <LocaleSwitch locale={locale} onLocaleChange={onLocaleChange} />
-              <a href="#" className="px-3.5 py-1.5 text-[13px] text-gray-300 hover:text-white transition-colors">
-                {copy.signIn}
-              </a>
               <a
-                href="#"
+                href={siteLinks.github}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-3.5 py-1.5 text-[13px] font-medium text-[#07080C] bg-white hover:bg-gray-200 rounded-md transition-colors"
+                style={{ fontFamily: fonts.display }}
               >
-                {copy.explore}
+                {copy.cta}
               </a>
             </div>
 
@@ -188,7 +147,9 @@ export function Header({ locale, onLocaleChange }: HeaderProps) {
               </a>
             ))}
             <a
-              href="#"
+              href={siteLinks.github}
+              target="_blank"
+              rel="noopener noreferrer"
               className="block px-3 py-2.5 text-[14px] text-gray-200 hover:text-white rounded-md hover:bg-white/[0.04] transition-colors"
               onClick={() => setMobileOpen(false)}
             >
@@ -196,10 +157,12 @@ export function Header({ locale, onLocaleChange }: HeaderProps) {
             </a>
             <div className="pt-3 border-t border-white/[0.06]">
               <a
-                href="#"
+                href={siteLinks.github}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block w-full text-center px-3.5 py-2.5 text-[14px] font-medium text-[#07080C] bg-white rounded-md"
               >
-                {copy.explore}
+                {copy.cta}
               </a>
             </div>
           </div>
