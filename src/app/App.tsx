@@ -4,8 +4,10 @@ import { Hero } from "./components/Hero";
 import { SocialProofMarquees } from "./components/SocialProofMarquees";
 import { MarketMomentum } from "./components/MarketMomentum";
 import { UseCases } from "./components/UseCases";
+import { AdapterEcosystem } from "./components/AdapterEcosystem";
 import { MemoryArchitecture } from "./components/MemoryArchitecture";
 import { Enterprise } from "./components/Enterprise";
+import { WhyStarfire } from "./components/WhyStarfire";
 import { FinalCTA } from "./components/FinalCTA";
 import { PhysicalVision } from "./components/PhysicalVision";
 import { Footer } from "./components/Footer";
@@ -41,13 +43,15 @@ export default function App() {
         <Header locale={locale} onLocaleChange={setLocale} />
         <main>
           <Hero locale={locale} />
+          <SocialProofMarquees locale={locale} />
           <MarketMomentum locale={locale} />
           <UseCases locale={locale} />
+          <AdapterEcosystem locale={locale} />
           <MemoryArchitecture locale={locale} />
           <Enterprise locale={locale} />
-          <PhysicalVision locale={locale} />
-          <SocialProofMarquees locale={locale} />
+          <WhyStarfire />
           <FinalCTA locale={locale} />
+          <PhysicalVision locale={locale} />
         </main>
         <Footer locale={locale} />
       </div>

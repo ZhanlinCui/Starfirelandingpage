@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Github, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import type { Locale } from "../i18n";
 import { headerContent, siteLinks, fonts } from "../content";
 
@@ -50,7 +50,81 @@ function LocaleSwitch({
 
 export function Header({ locale, onLocaleChange }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const barRef = useRef<HTMLDivElement | null>(null);
   const copy = headerContent[locale];
+  const scrollGap = 14;
+
+  const getAnchorOffset = () => {
+    const barHeight = barRef.current?.getBoundingClientRect().height ?? 60;
+    return barHeight + scrollGap;
+  };
+
+  const scrollToAnchor = (href: string, smooth = true) => {
+    if (!href.startsWith("#")) {
+      return;
+    }
+
+    const id = decodeURIComponent(href.slice(1));
+    if (!id || id === "top") {
+      window.scrollTo({ top: 0, behavior: smooth ? "smooth" : "auto" });
+      return;
+    }
+
+    const target = document.getElementById(id);
+    if (!target) {
+      return;
+    }
+
+    const targetTop = target.getBoundingClientRect().top + window.scrollY - getAnchorOffset();
+    window.scrollTo({
+      top: Math.max(targetTop, 0),
+      behavior: smooth ? "smooth" : "auto",
+    });
+  };
+
+  const handleAnchorClick = (
+    event: MouseEvent<HTMLAnchorElement>,
+    href: string,
+    closeMobile = false,
+  ) => {
+    if (!href.startsWith("#")) {
+      if (closeMobile) {
+        setMobileOpen(false);
+      }
+      return;
+    }
+
+    event.preventDefault();
+    window.history.pushState(null, "", href);
+
+    if (closeMobile) {
+      setMobileOpen(false);
+      // Wait one frame so mobile menu collapse does not affect measurements.
+      requestAnimationFrame(() => {
+        scrollToAnchor(href, true);
+      });
+      return;
+    }
+
+    scrollToAnchor(href, true);
+  };
+
+  useEffect(() => {
+    const alignCurrentHash = () => {
+      if (!window.location.hash) {
+        return;
+      }
+      scrollToAnchor(window.location.hash, false);
+    };
+
+    const timeoutId = window.setTimeout(alignCurrentHash, 0);
+    window.addEventListener("hashchange", alignCurrentHash);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      window.removeEventListener("hashchange", alignCurrentHash);
+    };
+  }, []);
 
   return (
     <motion.header
@@ -64,8 +138,12 @@ export function Header({ locale, onLocaleChange }: HeaderProps) {
         style={{ backdropFilter: "blur(16px) saturate(180%)", background: "rgba(6,10,18,0.82)" }}
       >
         <div className="max-w-[1200px] mx-auto px-6">
-          <div className="flex items-center justify-between h-[60px]">
-            <a href="#top" className="flex items-center shrink-0 gap-2.5">
+          <div ref={barRef} className="flex items-center justify-between h-[60px]">
+            <a
+              href="#top"
+              className="flex items-center shrink-0 gap-2.5"
+              onClick={(event) => handleAnchorClick(event, "#top")}
+            >
               <span className="w-8 h-8 rounded-[8px] overflow-hidden border border-white/[0.14] bg-[#081022] flex items-center justify-center">
                 <img
                   src="/branding/starfire-logo.png"
@@ -88,6 +166,7 @@ export function Header({ locale, onLocaleChange }: HeaderProps) {
                   key={item.label}
                   href={item.href}
                   className="px-3 py-1.5 text-[13px] text-gray-300 hover:text-white transition-colors rounded-md hover:bg-white/[0.04]"
+                  onClick={(event) => handleAnchorClick(event, item.href)}
                 >
                   {item.label}
                 </a>
@@ -141,7 +220,7 @@ export function Header({ locale, onLocaleChange }: HeaderProps) {
                 key={item.label}
                 href={item.href}
                 className="block px-3 py-2.5 text-[14px] text-gray-200 hover:text-white rounded-md hover:bg-white/[0.04] transition-colors"
-                onClick={() => setMobileOpen(false)}
+                onClick={(event) => handleAnchorClick(event, item.href, true)}
               >
                 {item.label}
               </a>

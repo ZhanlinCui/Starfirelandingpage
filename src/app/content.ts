@@ -20,8 +20,10 @@ export const fonts = {
 export const sectionIds = {
   whyNow: "why-now",
   useCases: "use-cases",
+  adapters: "adapters",
   memory: "memory",
   platform: "platform",
+  whyStarfire: "why-starfire",
   vision: "vision",
 } as const;
 
@@ -40,9 +42,9 @@ export const headerContent: Record<Locale, HeaderContent> = {
     nav: [
       { label: "Why Now", href: `#${sectionIds.whyNow}` },
       { label: "Use Cases", href: `#${sectionIds.useCases}` },
-      { label: "Memory", href: `#${sectionIds.memory}` },
+      { label: "Adapters", href: `#${sectionIds.adapters}` },
+      { label: "Memory & Hermes", href: `#${sectionIds.memory}` },
       { label: "Platform", href: `#${sectionIds.platform}` },
-      { label: "Vision", href: `#${sectionIds.vision}` },
     ],
     github: "GitHub",
     cta: "View on GitHub",
@@ -52,9 +54,9 @@ export const headerContent: Record<Locale, HeaderContent> = {
     nav: [
       { label: "为什么是现在", href: `#${sectionIds.whyNow}` },
       { label: "应用场景", href: `#${sectionIds.useCases}` },
-      { label: "记忆架构", href: `#${sectionIds.memory}` },
+      { label: "适配器", href: `#${sectionIds.adapters}` },
+      { label: "记忆与 Hermes", href: `#${sectionIds.memory}` },
       { label: "平台能力", href: `#${sectionIds.platform}` },
-      { label: "愿景", href: `#${sectionIds.vision}` },
     ],
     github: "GitHub",
     cta: "查看 GitHub",
@@ -76,22 +78,22 @@ export type HeroContent = {
 
 export const heroContent: Record<Locale, HeroContent> = {
   en: {
-    badge: "Open source · shipping on main",
-    titleLine1: "The org-native control plane",
-    titleHighlight: "for heterogeneous AI agent teams.",
-    primaryCta: "Explore Architecture",
+    badge: "Open source · runtime ecosystem live",
+    titleLine1: "Run AI teams as an org,",
+    titleHighlight: "not a pile of prompts.",
+    primaryCta: "See the Architecture",
     secondaryCta: "View on GitHub",
     description:
-      "Workspace = role. Org chart = topology. Six runtimes, hierarchy-scoped memory, production governance — out of the box.",
+      "Workspace = role. Org chart = topology. Memory follows hierarchy, communication is A2A, and governance ships ready for production.",
   },
   zh: {
-    badge: "开源项目 · 持续交付中",
-    titleLine1: "面向异构 AI Agent 团队的",
-    titleHighlight: "组织原生控制平面。",
-    primaryCta: "探索架构",
+    badge: "开源项目 · 运行时生态已上线",
+    titleLine1: "把 AI 团队按组织来运行，",
+    titleHighlight: "而不是按 prompt 来拼。",
+    primaryCta: "查看架构",
     secondaryCta: "查看 GitHub",
     description:
-      "工作空间 = 角色，组织图 = 拓扑。六种运行时、层级记忆、生产级治理——开箱即用。",
+      "工作空间 = 角色。组织图 = 拓扑。记忆沿层级流动，通信走 A2A，治理默认就是生产级。",
   },
 };
 
@@ -196,7 +198,7 @@ export const heroVisualContent: Record<Locale, HeroVisualContent> = {
       { label: "trace", value: "langfuse + otel", dot: "bg-emerald-400/40" },
       {
         label: "runtime",
-        value: "6 adapters · T1–T4",
+        value: "runtime adapters · T1–T4",
         dot: "bg-amber-400/40",
       },
     ],
@@ -508,8 +510,8 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
         ],
         capabilities: ["HMA", "DeepAgents", "Langfuse", "A2A"],
         slides: [
-          { src: "/screenshots/starfire-canvas-chat.png", alt: "Canvas: research team topology with 3 sibling analysts" },
           { src: "/screenshots/starfire-memory.png", alt: "Memory panel showing LOCAL scope isolation" },
+          { src: "/screenshots/starfire-canvas-chat.png", alt: "Canvas: research team topology with 3 sibling analysts" },
           { src: "/screenshots/starfire-events.png", alt: "Langfuse trace chain across research workspaces" },
         ],
       },
@@ -520,15 +522,15 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
         description:
           "Claude Code, LangGraph, OpenClaw — side-by-side in one team workspace with A2A routing and HITL gates.",
         bullets: [
-          "Six runtime adapters, one workspace",
+          "Runtime adapters in one workspace",
           "HITL approval for deploy and merge",
           "Recursive team expansion, zero drift",
         ],
-        capabilities: ["6 adapters", "A2A", "HITL", "team expansion"],
+        capabilities: ["runtime adapters", "A2A", "HITL", "team expansion"],
         slides: [
-          { src: "/screenshots/starfire-templates-comms.png", alt: "Canvas: engineering team with 4 heterogeneous runtime agents" },
+          { src: "/screenshots/starfire-details.png", alt: "Full Canvas overview with multi-team topology" },
           { src: "/screenshots/starfire-context-menu.png", alt: "Drag-to-nest team expansion in action" },
-          { src: "/screenshots/starfire-canvas-chat.png", alt: "HITL approval dialog for deploy action" },
+          { src: "/screenshots/starfire-terminal.png", alt: "10-tab operations panel: Chat + Activity + Terminal" },
         ],
       },
       {
@@ -545,8 +547,8 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
         capabilities: ["RBAC", "approvals", "audit", "secrets"],
         slides: [
           { src: "/screenshots/starfire-config.png", alt: "Config panel with RBAC roles and compliance settings" },
-          { src: "/screenshots/starfire-activity.png", alt: "Activity log stream with approval events" },
           { src: "/screenshots/starfire-files.png", alt: "Secrets management with global inheritance" },
+          { src: "/screenshots/starfire-activity.png", alt: "Activity log stream with approval events" },
         ],
       },
       {
@@ -556,14 +558,15 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
         description:
           "Monitor health, tasks, and escalations across every team — with a 10-tab ops panel per workspace.",
         bullets: [
+          "First-run onboarding becomes obvious",
           "Real-time topology via WebSocket",
           "10-tab ops panel per workspace",
           "Pause / resume / restart any agent",
         ],
         capabilities: ["Canvas", "WebSocket", "health sweep", "lifecycle"],
         slides: [
+          { src: "/screenshots/starfire-onboarding.png", alt: "Empty-state onboarding for creating the first workspace" },
           { src: "/screenshots/starfire-details.png", alt: "Full Canvas overview with multi-team topology" },
-          { src: "/screenshots/starfire-terminal.png", alt: "10-tab operations panel: Chat + Activity + Terminal" },
           { src: "/screenshots/starfire-alerts-health.png", alt: "Health sweep dashboard with real-time status" },
         ],
       },
@@ -605,11 +608,11 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
         description:
           "Claude Code、LangGraph、OpenClaw 并行运行于同一工作空间，A2A 路由 + HITL 审批。",
         bullets: [
-          "六种运行时适配器，一个工作空间",
+          "运行时适配器同仓运行",
           "部署与合并需人工审批",
           "递归团队扩展，零漂移",
         ],
-        capabilities: ["6 适配器", "A2A", "HITL", "团队扩展"],
+        capabilities: ["运行时适配器", "A2A", "HITL", "团队扩展"],
         slides: [
           { src: "/screenshots/starfire-templates-comms.png", alt: "Canvas: 4 个异构运行时 Agent 的工程团队" },
           { src: "/screenshots/starfire-context-menu.png", alt: "拖拽嵌套实现团队扩展" },
@@ -675,6 +678,9 @@ export type MemoryArchitectureContent = {
   eyebrow: string;
   title: string;
   description: string;
+  hermesTitle: string;
+  hermesSubtitle: string;
+  hermesSteps: string[];
   layers: MemoryLayer[];
   extrasTitle: string;
   extras: MemoryExtra[];
@@ -690,7 +696,15 @@ export const memoryArchitectureContent: Record<
     eyebrow: "Organizational Infrastructure",
     title: "Memory Follows Organizational Boundaries",
     description:
-      "Three scopes — LOCAL, TEAM, GLOBAL — replace flat shared context with hierarchy-aware isolation that scales.",
+      "Three scopes — LOCAL, TEAM, GLOBAL — replace flat shared context with hierarchy-aware isolation. Awareness remembers what happened; Hermes turns repeated wins into reusable skills.",
+    hermesTitle: "Hermes is the skill layer",
+    hermesSubtitle:
+      "Awareness stores what happened. Hermes reads that memory back, finds repeatable patterns, and promotes the ones that work into reusable skills.",
+    hermesSteps: [
+      "Load workspace memory first",
+      "Recall the pattern that matches the task",
+      "Promote repeated wins into skills",
+    ],
     layers: [
       {
         name: "LOCAL",
@@ -717,19 +731,19 @@ export const memoryArchitectureContent: Record<
     extrasTitle: "Beyond Three Scopes",
     extras: [
       {
-        label: "Awareness Namespaces",
+        label: "Awareness Capture",
         detail:
-          "Production backend with workspace-scoped isolation via AWARENESS_URL.",
+          "Awareness persists decisions, tasks, mistakes, and preferences across sessions at the workspace level.",
       },
       {
-        label: "Session Recall",
+        label: "Hermes Recall",
         detail:
-          "Search recent activity and memory rows for contextual recall.",
+          "On the next run, the agent loads memory first, then recalls the patterns that matter for the current task.",
       },
       {
-        label: "Memory → Skill Compounding",
+        label: "Memory → Skill Promotion",
         detail:
-          "Successful patterns graduate into hot-reloadable skills across sessions.",
+          "When a workflow repeats and works, Hermes saves it as a skill so the team can reuse it next time.",
       },
     ],
     outcomesTitle: "Why This Wins in Production",
@@ -737,6 +751,7 @@ export const memoryArchitectureContent: Record<
       "Sibling workspaces isolated by default",
       "Memory sharing follows org topology exactly",
       "Escalation paths mirror hierarchy",
+      "Repeated workflows become reusable skills",
       "Audit-ready JSON Lines event logging",
     ],
   },
@@ -744,7 +759,15 @@ export const memoryArchitectureContent: Record<
     eyebrow: "组织基础设施",
     title: "记忆沿组织边界流动",
     description:
-      "三层作用域——LOCAL、TEAM、GLOBAL——用层级感知隔离替代扁平共享上下文，可规模化扩展。",
+      "三层作用域——LOCAL、TEAM、GLOBAL——用层级感知隔离替代扁平共享上下文。Awareness 负责记住发生了什么，Hermes 负责把反复成功的流程变成技能。",
+    hermesTitle: "Hermes 是技能层",
+    hermesSubtitle:
+      "Awareness 负责存下发生了什么。Hermes 会把这些记忆读回来，找到可重复的模式，并把有效流程晋升成可复用技能。",
+    hermesSteps: [
+      "先加载工作空间记忆",
+      "召回和当前任务匹配的模式",
+      "把反复成功的流程晋升为技能",
+    ],
     layers: [
       {
         name: "LOCAL",
@@ -771,19 +794,19 @@ export const memoryArchitectureContent: Record<
     extrasTitle: "三层之上的扩展",
     extras: [
       {
-        label: "Awareness 命名空间",
+        label: "Awareness 采集",
         detail:
-          "生产级后端，通过 AWARENESS_URL 实现工作空间级隔离。",
+          "Awareness 持久化每个工作空间的决策、任务、失误和偏好。",
       },
       {
-        label: "会话回溯",
+        label: "Hermes 回忆",
         detail:
-          "检索近期活动与记忆行，提供上下文回溯。",
+          "下一次启动时，先加载记忆，再召回当前任务需要的模式。",
       },
       {
-        label: "记忆 → 技能复合积累",
+        label: "记忆 → 技能晋升",
         detail:
-          "成功模式毕业为可热重载的技能，跨会话持久化。",
+          "当一个流程被反复验证有效，Hermes 就把它保存成技能，让团队下次直接复用。",
       },
     ],
     outcomesTitle: "为什么它能在生产环境取胜",
@@ -791,8 +814,97 @@ export const memoryArchitectureContent: Record<
       "同级工作空间默认隔离",
       "记忆共享严格遵循组织拓扑",
       "升级路径精确映射层级",
+      "重复流程会沉淀为可复用技能",
       "JSON Lines 审计就绪事件日志",
     ],
+  },
+};
+
+// ═══════════════════════════════════════════════════════════
+//  ADAPTER ECOSYSTEM  →  Providers / Runtimes / Tools
+// ═══════════════════════════════════════════════════════════
+export type AdapterEcosystemCard = {
+  title: string;
+  subtitle: string;
+  details: string[];
+};
+
+export type AdapterEcosystemContent = {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  cards: AdapterEcosystemCard[];
+  closing: string;
+};
+
+export const adapterEcosystemContent: Record<Locale, AdapterEcosystemContent> = {
+  en: {
+    eyebrow: "Adapter Ecosystem",
+    title: "One control plane, many interchangeable layers",
+    subtitle:
+      "Starfire does not bind you to one model, one CLI, or one framework. It standardizes the boundary between the org layer and whatever runs inside each workspace.",
+    cards: [
+      {
+        title: "Model Providers",
+        subtitle: "Choose the model without changing the org contract.",
+        details: [
+          "Claude, OpenAI, Nemotron, and local models can all sit behind the same workspace role.",
+          "The model is an implementation detail; the workspace identity stays stable.",
+        ],
+      },
+      {
+        title: "Runtime Adapters",
+        subtitle: "Swap execution engines per role or team.",
+        details: [
+          "Claude Code, OpenClaw, LangGraph, CrewAI, AutoGen, and DeepAgents all plug into the same topology.",
+          "Each adapter owns execution style, while Starfire owns hierarchy, routing, and governance.",
+        ],
+      },
+      {
+        title: "Tool, Eval, and Observability Layer",
+        subtitle: "Connect the ecosystem, then measure it.",
+        details: [
+          "MCP gives workspaces shared tools, NeMo Agent Toolkit broadens tools/eval/observability, and Langfuse traces the result.",
+          "This is the layer where the platform learns what works across runtimes and feeds that signal back into memory.",
+        ],
+      },
+    ],
+    closing:
+      "The adapter layer is the ecosystem layer: models, runtimes, tools, eval, and telemetry stay swappable under one org contract.",
+  },
+  zh: {
+    eyebrow: "适配器生态",
+    title: "一个控制平面，多层可替换组件",
+    subtitle:
+      "Starfire 不绑定单一模型、单一 CLI 或单一框架。它统一的是组织层与每个工作空间内部执行层之间的边界。",
+    cards: [
+      {
+        title: "模型提供层",
+        subtitle: "换模型，不换组织契约。",
+        details: [
+          "Claude、OpenAI、Nemotron 以及本地模型，都可以挂在同一工作空间角色后面。",
+          "模型只是实现细节，工作空间身份保持稳定。",
+        ],
+      },
+      {
+        title: "运行时适配层",
+        subtitle: "按角色或团队切换执行引擎。",
+        details: [
+          "Claude Code、OpenClaw、LangGraph、CrewAI、AutoGen、DeepAgents 都能接入同一组织拓扑。",
+          "每个 adapter 负责执行风格，Starfire 负责层级、路由和治理。",
+        ],
+      },
+      {
+        title: "工具 / 评估 / 观测层",
+        subtitle: "先连起来，再衡量它。",
+        details: [
+          "MCP 提供共享工具，NeMo Agent Toolkit 扩展工具、评估和观测，Langfuse 负责追踪结果。",
+          "这一层让平台知道哪个 runtime 真正有效，并把信号回灌到记忆中。",
+        ],
+      },
+    ],
+    closing:
+      "适配器层本质上就是生态层：模型、运行时、工具、评估和 telemetry 都可以在统一组织契约下替换。",
   },
 };
 
@@ -841,7 +953,7 @@ export const enterpriseContent: Record<Locale, EnterpriseContent> = {
       {
         title: "Governance Without Runtime Lock-in",
         description:
-          "Unified authority and audit across six runtimes — without forcing a single framework.",
+          "Unified authority and audit across runtime adapters — without forcing a single framework.",
       },
       {
         title: "Memory as Infrastructure",
@@ -909,7 +1021,7 @@ export const enterpriseContent: Record<Locale, EnterpriseContent> = {
       {
         title: "治理不锁定运行时",
         description:
-          "跨六种运行时统一权限与审计——不强制使用单一框架。",
+          "跨运行时适配器统一权限与审计——不强制使用单一框架。",
       },
       {
         title: "记忆即基础设施",
@@ -957,6 +1069,53 @@ export const enterpriseContent: Record<Locale, EnterpriseContent> = {
       },
     ],
   },
+};
+
+// ═══════════════════════════════════════════════════════════
+//  WHY STARFIRE  →  Competitive Positioning
+// ═══════════════════════════════════════════════════════════
+export type WhyStarfireItem = {
+  name: string;
+  bestAt: string;
+  notEnough: string;
+  starfireEdge: string;
+};
+
+export type WhyStarfireContent = {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  closing: string;
+  items: WhyStarfireItem[];
+};
+
+export const whyStarfireContent: WhyStarfireContent = {
+  eyebrow: "Against the field",
+  title: "Why Starfire",
+  subtitle:
+    "Most agent projects solve execution layers. Starfire solves the org layer.",
+  closing:
+    "Starfire is the org-native control plane for heterogeneous AI agent teams.",
+  items: [
+    {
+      name: "CrewAI / MetaGPT",
+      bestAt: "Role-based crews and software-company simulation.",
+      notEnough: "They model teamwork, but not a durable org layer.",
+      starfireEdge: "Starfire adds persistent workspaces, governance, memory, and policy.",
+    },
+    {
+      name: "AutoGen",
+      bestAt: "Conversational collaboration between agents and humans.",
+      notEnough: "Conversation alone does not define identity or policy.",
+      starfireEdge: "Starfire makes conversation one transport inside an operating model.",
+    },
+    {
+      name: "LangGraph + OpenAI Agents SDK",
+      bestAt: "Stateful orchestration, handoffs, tools, streaming, and tracing.",
+      notEnough: "They provide execution primitives, not an org model.",
+      starfireEdge: "Starfire connects those primitives to mixed runtimes and hierarchy.",
+    },
+  ],
 };
 
 // ═══════════════════════════════════════════════════════════
@@ -1042,15 +1201,15 @@ export const physicalVisionContent: Record<Locale, PhysicalVisionContent> = {
   en: {
     eyebrow: "Where This Goes",
     title: "From Agent Teams to Robot Teams",
-    subtitle: "The organizational layer that governs software agents today will govern physical systems tomorrow.",
+    subtitle: "The org layer that governs software agents today can govern physical systems tomorrow.",
     description:
-      "A workspace is a role with an A2A interface — not an LLM with a prompt. The same hierarchy, memory, and governance that coordinate containers today can coordinate any autonomous system.",
+      "A workspace is a role with an A2A interface. The same hierarchy, memory, and governance that coordinate containers today can coordinate any autonomous system.",
     phases: [
       {
         era: "NOW",
         title: "Software Agent Teams",
         description:
-          "LLM agents in containers — six runtimes, hierarchical memory, production observability, A2A coordination.",
+          "LLM agents in containers — runtime adapters, hierarchical memory, production observability, A2A coordination.",
         nodes: [
           "LangGraph orchestration",
           "Claude Code engineering",
@@ -1094,7 +1253,7 @@ export const physicalVisionContent: Record<Locale, PhysicalVisionContent> = {
   zh: {
     eyebrow: "未来方向",
     title: "从 Agent 团队到机器人团队",
-    subtitle: "今天治理软件 Agent 的组织层，明天将治理物理世界的系统。",
+    subtitle: "今天治理软件 Agent 的组织层，也可以治理物理世界的系统。",
     description:
       "工作空间是拥有 A2A 接口的角色——不是带提示词的 LLM。今天协调容器的层级、记忆与治理，同样可协调任何自治系统。",
     phases: [
@@ -1102,7 +1261,7 @@ export const physicalVisionContent: Record<Locale, PhysicalVisionContent> = {
         era: "现在",
         title: "软件 Agent 团队",
         description:
-          "容器中的 LLM Agent——六种运行时、分层记忆、生产级可观测性、A2A 协调。",
+          "容器中的 LLM Agent——运行时适配器、分层记忆、生产级可观测性、A2A 协调。",
         nodes: [
           "LangGraph 编排",
           "Claude Code 工程",

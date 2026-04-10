@@ -32,6 +32,45 @@ export function MemoryArchitecture({ locale }: MemoryArchitectureProps) {
           <p className="mt-3 text-[15px] md:text-[16px] leading-[1.65] text-slate-300/88">{copy.description}</p>
         </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.45, delay: 0.06 }}
+          className="rounded-2xl border border-cyan-300/20 bg-[#13263f] p-4 md:p-5 mb-3.5 shadow-[0_16px_44px_rgba(0,0,0,0.24)]"
+        >
+          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between mb-4">
+            <div>
+              <span
+                className="inline-flex px-2.5 py-0.5 rounded text-[10px] uppercase tracking-[0.08em] text-cyan-200/90 bg-cyan-400/[0.12] border border-cyan-300/20"
+                style={{ fontFamily: fonts.mono }}
+              >
+                Hermes
+              </span>
+              <h3 className="mt-2 text-[18px] md:text-[20px] font-semibold text-white" style={{ fontFamily: fonts.display }}>
+                {copy.hermesTitle}
+              </h3>
+            </div>
+            <p className="max-w-[720px] text-[13.5px] md:text-[14px] leading-[1.7] text-slate-300/88">
+              {copy.hermesSubtitle}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-2.5">
+            {copy.hermesSteps.map((step, index) => (
+              <div
+                key={step}
+                className="flex items-center gap-2.5 rounded-xl border border-white/[0.08] bg-white/[0.03] px-3 py-2.5 text-[13px] text-slate-200/92"
+              >
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cyan-300/15 text-cyan-100 text-[11px] font-semibold">
+                  {index + 1}
+                </span>
+                <span>{step}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Three Scope Cards */}
         <div className="grid md:grid-cols-3 gap-3 md:gap-3.5 mb-3.5">
           {copy.layers.map((layer, index) => (

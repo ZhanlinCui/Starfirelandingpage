@@ -71,16 +71,22 @@ export function AlbumShowcase({
           style={{ transform: `translateX(-${active * 100}%)` }}
         >
           {slides.map((slide, i) => (
-            <div key={`slide-${i}`} className="relative h-full w-full shrink-0">
+            <div
+              key={`slide-${i}`}
+              className="relative h-full w-full shrink-0 bg-[#070c18]"
+            >
               {slide.src ? (
                 <>
                   <img
                     src={slide.src}
                     alt={slide.alt}
-                    className="w-full h-full object-cover"
+                    className="absolute inset-0 h-full w-full object-contain object-center"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(6,9,18,0.35),rgba(6,9,18,0.03))]" />
+                  <div
+                    className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(6,9,18,0.22),transparent_55%)]"
+                    aria-hidden
+                  />
                 </>
               ) : (
                 <PlaceholderSlide alt={slide.alt} label={placeholderLabel} />
