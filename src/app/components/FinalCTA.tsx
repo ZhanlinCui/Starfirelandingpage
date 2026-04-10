@@ -11,7 +11,7 @@ export function FinalCTA({ locale }: FinalCTAProps) {
   const copy = finalCtaContent[locale];
 
   return (
-    <section className="py-24 lg:py-32 px-6 bg-[#0f192b] border-t border-white/[0.08]">
+    <section className="py-9 lg:py-12 px-6 bg-[#0f192b] border-t border-white/[0.08]">
       <div className="max-w-[980px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -23,14 +23,14 @@ export function FinalCTA({ locale }: FinalCTAProps) {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_62%_70%_at_18%_10%,rgba(56,189,248,0.15),transparent_60%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(56,139,253,0.14),rgba(9,13,22,0.98)_58%)]" />
 
-          <div className="relative px-8 py-14 lg:px-14 lg:py-16">
+          <div className="relative px-6 py-8 lg:px-10 lg:py-10">
             <div className="max-w-[760px] mx-auto text-center">
               <span className="inline-flex px-3 py-1 rounded-full text-[11px] tracking-[0.06em] uppercase border border-sky-300/35 text-sky-100 bg-sky-300/[0.12]">
                 {copy.eyebrow}
               </span>
 
               <h2
-                className="mt-5 text-[clamp(1.9rem,4.6vw,3.35rem)] font-semibold leading-[1.06] tracking-[-0.03em] text-white"
+                className="mt-4 text-[clamp(1.55rem,3.8vw,2.65rem)] font-semibold leading-[1.06] tracking-[-0.03em] text-white"
                 style={{ fontFamily: fonts.display }}
               >
                 {copy.titleTop}
@@ -40,9 +40,9 @@ export function FinalCTA({ locale }: FinalCTAProps) {
                 </span>
               </h2>
 
-              <p className="mt-6 text-[18px] leading-[1.74] text-slate-200/95">{copy.subtitle}</p>
+              <p className="mt-4 text-[16px] leading-[1.65] text-slate-200/95">{copy.subtitle}</p>
 
-              <div className="mt-10 flex flex-wrap items-center justify-center gap-3.5">
+              <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
                 {copy.actions.map((action) =>
                   action.primary ? (
                     <a

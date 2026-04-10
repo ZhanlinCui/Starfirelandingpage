@@ -12,7 +12,7 @@ export function Hero({ locale }: HeroProps) {
   const copy = heroContent[locale];
 
   return (
-    <section id="top" className="relative pt-[120px] pb-18 px-6 overflow-hidden">
+    <section id="top" className="relative pt-[88px] pb-6 md:pb-8 px-6 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_0%,rgba(0,86,214,0.2),transparent_65%)]" />
 
       <div className="relative max-w-[1280px] mx-auto">
@@ -25,11 +25,11 @@ export function Hero({ locale }: HeroProps) {
           <img
             src="/branding/starfire-text-logo-white.png"
             alt="Starfire"
-            className="h-14 md:h-16 w-auto mx-auto mb-7 object-contain"
+            className="h-12 md:h-14 w-auto mx-auto mb-5 object-contain"
             loading="eager"
           />
 
-          <div className="flex items-center justify-center mb-6">
+          <div className="flex items-center justify-center mb-4">
             <span className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-[11px] font-medium tracking-[0.04em] text-sky-300 bg-sky-500/[0.08] border border-sky-500/[0.18]">
               <span className="w-1.5 h-1.5 rounded-full bg-sky-300 animate-pulse" />
               {copy.badge}
@@ -37,7 +37,7 @@ export function Hero({ locale }: HeroProps) {
           </div>
 
           <h1
-            className="text-[clamp(2.2rem,5.5vw,4.2rem)] font-semibold leading-[1.06] tracking-[-0.04em] text-white mb-6"
+            className="text-[clamp(1.95rem,4.8vw,3.35rem)] font-semibold leading-[1.08] tracking-[-0.035em] text-white mb-4"
             style={{ fontFamily: fonts.display }}
           >
             {copy.titleLine1}
@@ -47,11 +47,11 @@ export function Hero({ locale }: HeroProps) {
             </span>
           </h1>
 
-          <p className="mt-4 text-[16px] leading-[1.74] text-slate-100/95 max-w-[860px] mx-auto">
+          <p className="mt-3 text-[15px] leading-[1.68] text-slate-100/95 max-w-[820px] mx-auto">
             {copy.description}
           </p>
 
-          <div className="mt-8 flex flex-wrap justify-center items-center gap-3.5">
+          <div className="mt-6 flex flex-wrap justify-center items-center gap-3">
             <a
               href={siteLinks.architecture}
               target="_blank"
@@ -79,9 +79,9 @@ export function Hero({ locale }: HeroProps) {
           initial={{ opacity: 0, y: 30, scale: 0.99 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-12 md:mt-14"
+          className="mt-6 md:mt-7"
         >
-          <div className="relative rounded-[28px] border border-sky-500/30 p-3 md:p-4 bg-[#04060d]/80 shadow-[0_0_0_1px_rgba(0,86,214,0.25),0_30px_90px_rgba(0,0,0,0.55)]">
+          <div className="relative rounded-[22px] border border-sky-500/30 p-2.5 md:p-3.5 bg-[#04060d]/80 shadow-[0_0_0_1px_rgba(0,86,214,0.25),0_24px_72px_rgba(0,0,0,0.5)]">
             <HeroVisual locale={locale} />
           </div>
         </motion.div>

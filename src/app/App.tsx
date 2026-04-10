@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
+import { SocialProofMarquees } from "./components/SocialProofMarquees";
 import { MarketMomentum } from "./components/MarketMomentum";
 import { UseCases } from "./components/UseCases";
 import { MemoryArchitecture } from "./components/MemoryArchitecture";
@@ -45,6 +46,7 @@ export default function App() {
           <MemoryArchitecture locale={locale} />
           <Enterprise locale={locale} />
           <PhysicalVision locale={locale} />
+          <SocialProofMarquees locale={locale} />
           <FinalCTA locale={locale} />
         </main>
         <Footer locale={locale} />

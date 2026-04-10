@@ -59,9 +59,9 @@ function PhaseCard({ phase, index }: { phase: VisionPhase; index: number }) {
         <div className="absolute inset-0 rounded-2xl border border-emerald-400/20 animate-pulse" />
       )}
 
-      <div className="relative p-6 md:p-8">
+      <div className="relative p-5 md:p-6">
         {/* Era badge + status */}
-        <div className="flex items-center justify-between mb-5">
+        <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <span
               className="text-[clamp(1.8rem,3.5vw,2.4rem)] font-bold text-white/90 leading-none"
@@ -79,13 +79,13 @@ function PhaseCard({ phase, index }: { phase: VisionPhase; index: number }) {
         </div>
 
         <h3
-          className="text-[20px] md:text-[22px] font-semibold text-white mb-3 leading-[1.25]"
+          className="text-[18px] md:text-[20px] font-semibold text-white mb-2.5 leading-[1.25]"
           style={{ fontFamily: fonts.display }}
         >
           {phase.title}
         </h3>
 
-        <p className="text-[14px] leading-[1.72] text-slate-300/85 mb-5">{phase.description}</p>
+        <p className="text-[13px] leading-[1.65] text-slate-300/85 mb-4">{phase.description}</p>
 
         {/* Node grid */}
         <div className="grid grid-cols-2 gap-2">
@@ -118,7 +118,7 @@ export function PhysicalVision({ locale }: PhysicalVisionProps) {
   return (
     <section
       id={sectionIds.vision}
-      className="relative py-28 md:py-36 px-6 overflow-hidden"
+      className="relative py-10 md:py-14 px-6 overflow-hidden"
       style={{ background: "linear-gradient(180deg, #080d18 0%, #0a1020 30%, #0d0a1a 60%, #0a0e1c 100%)" }}
     >
       {/* Cinematic background elements */}
@@ -145,7 +145,7 @@ export function PhysicalVision({ locale }: PhysicalVisionProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="text-center max-w-[900px] mx-auto mb-14 md:mb-18"
+          className="text-center max-w-[900px] mx-auto mb-5 md:mb-7"
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] tracking-[0.06em] uppercase border border-violet-400/30 text-violet-200/90 bg-violet-500/[0.08]">
             <Radar className="w-3 h-3" />
@@ -153,25 +153,25 @@ export function PhysicalVision({ locale }: PhysicalVisionProps) {
           </span>
 
           <h2
-            className="mt-6 text-[clamp(2rem,5vw,3.5rem)] font-bold leading-[1.05] tracking-[-0.04em] text-white"
+            className="mt-4 text-[clamp(1.65rem,4vw,2.75rem)] font-bold leading-[1.06] tracking-[-0.035em] text-white"
             style={{ fontFamily: fonts.display }}
           >
             {copy.title}
           </h2>
 
           <p
-            className="mt-4 text-[clamp(1rem,2vw,1.25rem)] leading-[1.6] text-slate-200/90 max-w-[780px] mx-auto"
+            className="mt-3 text-[clamp(0.95rem,1.85vw,1.15rem)] leading-[1.55] text-slate-200/90 max-w-[760px] mx-auto"
           >
             {copy.subtitle}
           </p>
 
-          <p className="mt-4 text-[15px] leading-[1.72] text-slate-400/85 max-w-[720px] mx-auto">
+          <p className="mt-3 text-[14px] leading-[1.65] text-slate-400/85 max-w-[720px] mx-auto">
             {copy.description}
           </p>
         </motion.div>
 
         {/* Phase cards — NOW → NEXT → HORIZON */}
-        <div className="grid lg:grid-cols-3 gap-5 md:gap-6 mb-14">
+        <div className="grid lg:grid-cols-3 gap-3.5 md:gap-4 mb-5 md:mb-7">
           {copy.phases.map((phase, index) => (
             <PhaseCard key={phase.era} phase={phase} index={index} />
           ))}

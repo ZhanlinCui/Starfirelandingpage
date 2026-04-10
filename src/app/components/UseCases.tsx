@@ -41,7 +41,7 @@ export function UseCases({ locale }: UseCasesProps) {
   const codePanel = scenarioCodePanels[active.key] ?? "";
 
   return (
-    <section id={sectionIds.useCases} className="relative py-22 md:py-28 px-6 bg-[#0b1322] border-y border-white/[0.08]">
+    <section id={sectionIds.useCases} className="relative py-8 md:py-10 px-6 bg-[#0b1322] border-y border-white/[0.08]">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(34,197,255,0.09),transparent_62%)]" />
       <div className="max-w-[1260px] mx-auto">
         <motion.div
@@ -49,21 +49,21 @@ export function UseCases({ locale }: UseCasesProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.55 }}
-          className="relative text-center max-w-[920px] mx-auto mb-10 md:mb-12"
+          className="relative text-center max-w-[920px] mx-auto mb-4 md:mb-5"
         >
           <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] tracking-[0.06em] uppercase border border-cyan-300/30 text-cyan-200/90 bg-cyan-300/[0.08]">
             {copy.eyebrow}
           </span>
           <h2
-            className="mt-5 text-[clamp(1.6rem,3vw,2.1rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-slate-200"
+            className="mt-2.5 text-[clamp(1.45rem,2.6vw,1.9rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-slate-200"
             style={{ fontFamily: fonts.display }}
           >
             {copy.title}
           </h2>
-          <div className="mt-4 flex justify-center">
+          <div className="mt-3 flex justify-center">
             <RotatingText
               texts={copy.rotatingTexts}
-              mainClassName="px-6 sm:px-7 md:px-9 bg-gradient-to-r from-sky-300 via-blue-300 to-cyan-200 text-black border border-sky-200 overflow-hidden py-2 sm:py-2.5 md:py-3 justify-center rounded-xl shadow-[0_0_36px_rgba(56,139,253,0.38)] text-[24px] sm:text-[30px] md:text-[40px] font-extrabold leading-[1.05] tracking-[-0.02em] min-h-[52px] sm:min-h-[64px] md:min-h-[78px]"
+              mainClassName="px-5 sm:px-6 md:px-8 bg-gradient-to-r from-sky-300 via-blue-300 to-cyan-200 text-black border border-sky-200 overflow-hidden py-1.5 sm:py-2 md:py-2.5 justify-center rounded-xl shadow-[0_0_36px_rgba(56,139,253,0.38)] text-[20px] sm:text-[26px] md:text-[32px] font-extrabold leading-[1.05] tracking-[-0.02em] min-h-[42px] sm:min-h-[52px] md:min-h-[62px]"
               staggerFrom="last"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
@@ -74,10 +74,9 @@ export function UseCases({ locale }: UseCasesProps) {
               rotationInterval={2000}
             />
           </div>
-          <p className="mt-5 text-[16px] leading-[1.7] text-slate-300/85">{copy.description}</p>
         </motion.div>
 
-        <div className="relative flex flex-wrap justify-center gap-2.5 mb-8 md:mb-10">
+        <div className="relative flex flex-wrap justify-center gap-2 mb-4 md:mb-5">
           {copy.scenarios.map((scenario) => {
             const activeChip = scenario.key === activeKey;
             return (
@@ -85,7 +84,7 @@ export function UseCases({ locale }: UseCasesProps) {
                 key={scenario.key}
                 type="button"
                 onClick={() => setActiveKey(scenario.key)}
-                className={`px-4 py-2 rounded-full text-[13px] border transition-all ${
+                className={`px-3.5 py-1.5 rounded-full text-[13px] border transition-all ${
                   activeChip
                     ? "bg-sky-300 text-[#041323] border-sky-200 shadow-[0_0_28px_rgba(56,139,253,0.35)]"
                     : "bg-[#111a2c] text-slate-300 border-white/[0.14] hover:bg-[#16233a]"
@@ -102,11 +101,11 @@ export function UseCases({ locale }: UseCasesProps) {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35 }}
-          className="relative rounded-[28px] border border-white/[0.14] bg-[#0f1a2d] overflow-hidden p-4 md:p-6 shadow-[0_20px_70px_rgba(0,0,0,0.35)]"
+          className="relative rounded-[24px] border border-white/[0.14] bg-[#0f1a2d] overflow-hidden p-4 md:p-5 shadow-[0_20px_70px_rgba(0,0,0,0.35)]"
         >
-          <div className="grid lg:grid-cols-[1fr_1.45fr] gap-6 md:gap-8 items-center">
-            <div className="px-2 md:px-4">
-              <div className="flex flex-wrap items-center gap-2 mb-4">
+          <div className="grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-5 items-center">
+            <div className="px-2 md:px-3">
+              <div className="flex flex-wrap items-center gap-2 mb-3">
                 <span className="inline-flex px-3 py-1 rounded-full text-[12px] text-sky-100 bg-sky-400/[0.16] border border-sky-300/40">
                   {active.tag}
                 </span>
@@ -121,26 +120,24 @@ export function UseCases({ locale }: UseCasesProps) {
                 ))}
               </div>
               <h3
-                className="text-[clamp(1.6rem,3.5vw,2.2rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white"
+                className="text-[clamp(1.35rem,3vw,1.85rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white"
                 style={{ fontFamily: fonts.display }}
               >
                 {active.title}
               </h3>
-              <p className="mt-4 text-[15px] leading-[1.72] text-slate-300/85">{active.description}</p>
-              <ul className="mt-5 space-y-2.5">
+              <p className="mt-2.5 text-[14px] leading-[1.65] text-slate-300/85">{active.description}</p>
+              <ul className="mt-3.5 space-y-2">
                 {active.bullets.map((bullet) => (
-                  <li key={bullet} className="text-[14px] text-slate-200/90 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-300" />
+                  <li key={bullet} className="text-[13px] text-slate-200/90 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-300 shrink-0" />
                     {bullet}
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Right panel: screenshots carousel or code view */}
             <div>
-              {/* View mode toggle */}
-              <div className="flex items-center justify-end gap-1.5 mb-3">
+              <div className="flex items-center justify-end gap-1.5 mb-2.5">
                 <button
                   type="button"
                   onClick={() => setViewMode("screenshots")}

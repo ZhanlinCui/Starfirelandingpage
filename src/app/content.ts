@@ -82,7 +82,7 @@ export const heroContent: Record<Locale, HeroContent> = {
     primaryCta: "Explore Architecture",
     secondaryCta: "View on GitHub",
     description:
-      "A workspace is a role. The org chart is the topology. Six runtime adapters run side-by-side. Memory follows hierarchy. Starfire is how you govern AI teams in production.",
+      "Workspace = role. Org chart = topology. Six runtimes, hierarchy-scoped memory, production governance — out of the box.",
   },
   zh: {
     badge: "开源项目 · 持续交付中",
@@ -91,7 +91,7 @@ export const heroContent: Record<Locale, HeroContent> = {
     primaryCta: "探索架构",
     secondaryCta: "查看 GitHub",
     description:
-      "工作空间即角色，组织图即拓扑。六种运行时适配器并行运行，记忆沿层级流动。Starfire 让你在生产环境中治理 AI 团队。",
+      "工作空间 = 角色，组织图 = 拓扑。六种运行时、层级记忆、生产级治理——开箱即用。",
   },
 };
 
@@ -299,22 +299,22 @@ export const marketMomentumContent: Record<Locale, MarketMomentumContent> = {
       {
         title: "Single-Agent Demos Hit a Ceiling",
         detail:
-          "One agent can answer questions. It cannot run a release pipeline, staff a research pod, or escalate across organizational boundaries. Coordination — not intelligence — is the constraint.",
+          "One agent answers questions — it can't run a release pipeline or escalate across org boundaries. Coordination is the constraint.",
       },
       {
-        title: "Governance Became a Launch Prerequisite",
+        title: "Governance Is a Launch Prerequisite",
         detail:
-          "Enterprises won't ship agent workloads without scoped authority, audit trails, and human-in-the-loop approval gates. Governance is no longer a phase-two concern.",
+          "No scoped authority, no audit trail, no HITL gates — no production deployment. Governance is day-one, not phase-two.",
       },
       {
         title: "Memory Boundaries Define Platform Value",
         detail:
-          "Flat shared context leaks information and breaks at scale. Topology-scoped memory — LOCAL, TEAM, GLOBAL — is becoming the baseline expectation for production agent platforms.",
+          "Flat shared context leaks data and breaks at scale. Topology-scoped memory (LOCAL / TEAM / GLOBAL) is the new baseline.",
       },
       {
         title: "Heterogeneous Runtimes Are the Norm",
         detail:
-          "Teams pick LangGraph for orchestration, Claude Code for engineering, CrewAI for crews. No single framework wins everywhere. The control plane must be runtime-agnostic.",
+          "LangGraph, Claude Code, CrewAI — no single framework wins everywhere. The control plane must be runtime-agnostic.",
       },
     ],
   },
@@ -325,23 +325,73 @@ export const marketMomentumContent: Record<Locale, MarketMomentumContent> = {
       {
         title: "单 Agent 演示已触及天花板",
         detail:
-          "一个 Agent 能回答问题，但无法运行发布流水线、组建研究小组或跨组织边界升级。协调能力——而非智能——才是真正的瓶颈。",
+          "一个 Agent 能回答问题——但无法运行流水线或跨组织升级。协调才是瓶颈。",
       },
       {
-        title: "治理已成为上线前置条件",
+        title: "治理是上线前置条件",
         detail:
-          "企业不会在没有权限作用域、审计链路和人工审批门禁的情况下发布 Agent 工作负载。治理不再是「第二阶段」的事。",
+          "没有权限作用域、审计链路和人工审批，就没有生产部署。治理是第一天的事。",
       },
       {
         title: "记忆边界决定平台价值",
         detail:
-          "扁平共享上下文会泄漏信息并在规模化时失效。拓扑作用域记忆——LOCAL、TEAM、GLOBAL——正在成为生产级 Agent 平台的基线要求。",
+          "扁平共享上下文在规模化时泄漏数据。拓扑作用域记忆（LOCAL / TEAM / GLOBAL）是新基线。",
       },
       {
         title: "异构运行时已成常态",
         detail:
-          "团队用 LangGraph 做编排、Claude Code 做工程、CrewAI 做协作。没有一个框架能通吃所有场景。控制平面必须与运行时无关。",
+          "LangGraph、Claude Code、CrewAI——没有框架通吃所有场景。控制平面必须与运行时无关。",
       },
+    ],
+  },
+};
+
+// ═══════════════════════════════════════════════════════════
+//  SOCIAL PROOF  →  Cloud /云算力 marquee
+// ═══════════════════════════════════════════════════════════
+export type SocialProofLogoItem = {
+  id: string;
+  logo: string;
+};
+
+export type SocialProofContent = {
+  /** Static summary for assistive tech; decorative strips are aria-hidden. */
+  summary: string;
+  cloudEyebrow: string;
+  cloudTitle: string;
+  cloudSubtitle: string;
+  cloudPartners: SocialProofLogoItem[];
+};
+
+export const socialProofContent: Record<Locale, SocialProofContent> = {
+  en: {
+    summary:
+      "Starfire runs on leading cloud and silicon partners: NVIDIA, AWS, Google Cloud, Alibaba Cloud, Tencent Cloud, and Microsoft Azure.",
+    cloudEyebrow: "Infrastructure",
+    cloudTitle: "Cloud & silicon",
+    cloudSubtitle: "Deploy where your data and GPUs already live.",
+    cloudPartners: [
+      { id: "nvidia", logo: "/partners/nvidia.svg" },
+      { id: "aws", logo: "/partners/aws.svg" },
+      { id: "google-cloud", logo: "/partners/google-cloud.svg" },
+      { id: "alibaba-cloud", logo: "/partners/alibaba-cloud.svg" },
+      { id: "tencent-cloud", logo: "/partners/tencent-cloud.svg" },
+      { id: "azure", logo: "/partners/azure.svg" },
+    ],
+  },
+  zh: {
+    summary:
+      "Starfire 支持主流云与算力伙伴：NVIDIA、AWS、Google Cloud、阿里云、腾讯云与 Microsoft Azure。",
+    cloudEyebrow: "云算力",
+    cloudTitle: "云与算力伙伴",
+    cloudSubtitle: "在数据与 GPU 所在之处部署。",
+    cloudPartners: [
+      { id: "nvidia", logo: "/partners/nvidia.svg" },
+      { id: "aws", logo: "/partners/aws.svg" },
+      { id: "google-cloud", logo: "/partners/google-cloud.svg" },
+      { id: "alibaba-cloud", logo: "/partners/alibaba-cloud.svg" },
+      { id: "tencent-cloud", logo: "/partners/tencent-cloud.svg" },
+      { id: "azure", logo: "/partners/azure.svg" },
     ],
   },
 };
@@ -443,20 +493,18 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
       "Operations Automation",
       "Executive Control",
     ],
-    description:
-      "Each scenario maps to capabilities shipping on main today. No mockups — these are real organizational patterns you can deploy with Starfire now.",
+    description: "",
     scenarios: [
       {
         key: "research",
         tag: "Research Orgs",
-        title: "Parallel research streams with memory isolation",
+        title: "Parallel research with memory isolation",
         description:
-          "Split exploration into sibling research workspaces. Each operates with LOCAL memory scope, preventing cross-contamination. The parent coordinator synthesizes findings through TEAM-scoped memory channels.",
+          "Sibling workspaces explore independently under LOCAL scope; the parent synthesizes via TEAM memory.",
         bullets: [
-          "Sibling workspace isolation via HMA LOCAL scope",
-          "Parent-only synthesis through TEAM memory",
+          "Sibling isolation via HMA LOCAL scope",
+          "Parent synthesis through TEAM memory",
           "Per-workspace Langfuse trace chains",
-          "DeepAgents adapter for plan-first reasoning",
         ],
         capabilities: ["HMA", "DeepAgents", "Langfuse", "A2A"],
         slides: [
@@ -468,14 +516,13 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
       {
         key: "engineering",
         tag: "Engineering",
-        title: "Multi-runtime engineering teams that self-coordinate",
+        title: "Multi-runtime teams that self-coordinate",
         description:
-          "Frontend in Claude Code, backend in LangGraph, infra in OpenClaw — all under one team workspace. The coordinator routes tasks through A2A, enforces approval gates, and escalates by hierarchy.",
+          "Claude Code, LangGraph, OpenClaw — side-by-side in one team workspace with A2A routing and HITL gates.",
         bullets: [
-          "Claude Code, LangGraph, OpenClaw side-by-side",
-          "Coordinator enforces delegation-only routing",
-          "HITL approval for deploy and merge actions",
-          "Recursive team expansion without breaking upstream",
+          "Six runtime adapters, one workspace",
+          "HITL approval for deploy and merge",
+          "Recursive team expansion, zero drift",
         ],
         capabilities: ["6 adapters", "A2A", "HITL", "team expansion"],
         slides: [
@@ -489,12 +536,11 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
         tag: "Ops Automation",
         title: "Governance-first operational workflows",
         description:
-          "Turn recurring operations into managed agent duties. Each workspace runs within RBAC-scoped authority, with approval routing by hierarchy and audit-ready event records streamed via WebSocket.",
+          "RBAC-scoped authority, hierarchy-routed approvals, and audit-ready event streams — all per workspace.",
         bullets: [
           "RBAC roles: operator, admin, read-only",
           "Approval routing follows org topology",
-          "Audit log in JSON Lines format",
-          "Global secrets with per-workspace override",
+          "JSON Lines audit + global secrets",
         ],
         capabilities: ["RBAC", "approvals", "audit", "secrets"],
         slides: [
@@ -506,14 +552,13 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
       {
         key: "executive",
         tag: "Executive View",
-        title: "Live organizational control from one Canvas",
+        title: "Live control from one Canvas",
         description:
-          "Monitor every team's health, task state, and escalation path from the Canvas UI. The 10-tab operations panel gives direct access to chat, terminal, config, memory, traces, and files for any workspace.",
+          "Monitor health, tasks, and escalations across every team — with a 10-tab ops panel per workspace.",
         bullets: [
-          "WebSocket-first real-time topology updates",
+          "Real-time topology via WebSocket",
           "10-tab ops panel per workspace",
-          "Cross-team observability with health sweep",
-          "Pause / resume / restart lifecycle controls",
+          "Pause / resume / restart any agent",
         ],
         capabilities: ["Canvas", "WebSocket", "health sweep", "lifecycle"],
         slides: [
@@ -533,20 +578,18 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
       "运营自动化",
       "管理层控制台",
     ],
-    description:
-      "每个场景都映射到当前 main 分支已发布的能力。没有效果图——这些是你现在就能用 Starfire 部署的真实组织模式。",
+    description: "",
     scenarios: [
       {
         key: "research",
         tag: "研究组织",
-        title: "并行研究流且记忆完全隔离",
+        title: "并行研究，记忆完全隔离",
         description:
-          "将探索任务拆分为同级研究工作空间。每个工作空间在 LOCAL 记忆作用域内运行，防止交叉污染。父级协调器通过 TEAM 作用域记忆通道汇总结论。",
+          "同级工作空间在 LOCAL 作用域下独立探索，父级通过 TEAM 记忆汇总结论。",
         bullets: [
-          "通过 HMA LOCAL 作用域实现同级隔离",
-          "仅父级可通过 TEAM 记忆汇总",
-          "每个工作空间独立 Langfuse 追踪链",
-          "DeepAgents 适配器支持计划优先推理",
+          "HMA LOCAL 作用域实现同级隔离",
+          "父级通过 TEAM 记忆汇总",
+          "每个工作空间独立追踪链",
         ],
         capabilities: ["HMA", "DeepAgents", "Langfuse", "A2A"],
         slides: [
@@ -558,14 +601,13 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
       {
         key: "engineering",
         tag: "工程团队",
-        title: "多运行时工程团队自协调",
+        title: "多运行时团队自协调",
         description:
-          "前端用 Claude Code，后端用 LangGraph，基础设施用 OpenClaw——全部在一个团队工作空间下。协调器通过 A2A 路由任务，执行审批门禁，按层级升级。",
+          "Claude Code、LangGraph、OpenClaw 并行运行于同一工作空间，A2A 路由 + HITL 审批。",
         bullets: [
-          "Claude Code、LangGraph、OpenClaw 并行运行",
-          "协调器强制执行委派路由",
-          "部署和合并操作需人工审批",
-          "递归团队扩展不破坏上游集成",
+          "六种运行时适配器，一个工作空间",
+          "部署与合并需人工审批",
+          "递归团队扩展，零漂移",
         ],
         capabilities: ["6 适配器", "A2A", "HITL", "团队扩展"],
         slides: [
@@ -579,12 +621,11 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
         tag: "运营自动化",
         title: "治理优先的运营工作流",
         description:
-          "将周期性运营转化为受管理的 Agent 职责。每个工作空间在 RBAC 权限作用域内运行，审批按层级路由，审计就绪的事件记录通过 WebSocket 实时推送。",
+          "RBAC 权限作用域、按层级路由审批、审计就绪事件流——均按工作空间隔离。",
         bullets: [
-          "RBAC 角色: operator、admin、read-only",
+          "RBAC 角色: operator / admin / read-only",
           "审批路由遵循组织拓扑",
-          "JSON Lines 格式审计日志",
-          "全局密钥 + 工作空间级覆盖",
+          "JSON Lines 审计 + 全局密钥",
         ],
         capabilities: ["RBAC", "审批", "审计", "密钥管理"],
         slides: [
@@ -596,14 +637,13 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
       {
         key: "executive",
         tag: "管理视角",
-        title: "在一个 Canvas 上实时掌控全局",
+        title: "一个 Canvas 实时掌控全局",
         description:
-          "从 Canvas UI 监控每个团队的健康状态、任务进度与升级路径。10 标签操作面板提供对任意工作空间的聊天、终端、配置、记忆、追踪与文件的直接访问。",
+          "监控所有团队的健康状态、任务与升级路径——每个工作空间配备 10 标签操作面板。",
         bullets: [
-          "WebSocket 驱动的实时拓扑更新",
+          "WebSocket 实时拓扑更新",
           "每个工作空间 10 标签操作面板",
-          "跨团队可观测性 + 健康巡检",
-          "暂停 / 恢复 / 重启生命周期控制",
+          "暂停 / 恢复 / 重启任意 Agent",
         ],
         capabilities: ["Canvas", "WebSocket", "健康巡检", "生命周期"],
         slides: [
@@ -650,27 +690,27 @@ export const memoryArchitectureContent: Record<
     eyebrow: "Organizational Infrastructure",
     title: "Memory Follows Organizational Boundaries",
     description:
-      "Starfire replaces flat global memory with hierarchy-aware isolation. The three-scope model — LOCAL, TEAM, GLOBAL — ensures collaboration stays fast while boundaries stay enforceable across the entire org chart.",
+      "Three scopes — LOCAL, TEAM, GLOBAL — replace flat shared context with hierarchy-aware isolation that scales.",
     layers: [
       {
         name: "LOCAL",
         summary: "Private scratchpad per workspace.",
         detail:
-          "Isolated context for individual agent roles. Personal reasoning, temporary findings, and working state are invisible to siblings and unrelated teams.",
+          "Isolated context invisible to siblings and unrelated teams.",
         color: "from-sky-300/45 to-blue-500/15",
       },
       {
         name: "TEAM",
-        summary: "Shared within direct parent-child hierarchy.",
+        summary: "Shared within parent-child hierarchy.",
         detail:
-          "A coordination layer scoped to the immediate team. Parent and children share handoff context without leaking to sibling teams.",
+          "Handoff context scoped to the immediate team — no leaks to sibling workspaces.",
         color: "from-cyan-300/45 to-cyan-500/15",
       },
       {
         name: "GLOBAL",
-        summary: "Organization-wide knowledge from root.",
+        summary: "Org-wide knowledge from root.",
         detail:
-          "Root-managed policies, standards, and institutional knowledge flow down the hierarchy. Read access is organization-wide; write access is restricted to root.",
+          "Policies and standards flow down the hierarchy. Read: everyone. Write: root only.",
         color: "from-violet-300/45 to-violet-500/15",
       },
     ],
@@ -679,52 +719,52 @@ export const memoryArchitectureContent: Record<
       {
         label: "Awareness Namespaces",
         detail:
-          "Optional production-grade backend with workspace-scoped isolation via AWARENESS_URL + AWARENESS_NAMESPACE.",
+          "Production backend with workspace-scoped isolation via AWARENESS_URL.",
       },
       {
         label: "Session Recall",
         detail:
-          "Search recent activity and memory rows through the session-search endpoint for contextual recall.",
+          "Search recent activity and memory rows for contextual recall.",
       },
       {
         label: "Memory → Skill Compounding",
         detail:
-          "Successful patterns graduate from agent memory into hot-reloadable skills that persist across sessions.",
+          "Successful patterns graduate into hot-reloadable skills across sessions.",
       },
     ],
     outcomesTitle: "Why This Wins in Production",
     outcomes: [
-      "Sibling workspaces remain isolated by default",
-      "Memory sharing follows org chart topology exactly",
-      "Approval and escalation paths mirror hierarchy",
-      "Audit-ready with JSON Lines event logging",
+      "Sibling workspaces isolated by default",
+      "Memory sharing follows org topology exactly",
+      "Escalation paths mirror hierarchy",
+      "Audit-ready JSON Lines event logging",
     ],
   },
   zh: {
     eyebrow: "组织基础设施",
     title: "记忆沿组织边界流动",
     description:
-      "Starfire 用层级感知隔离替代扁平全局记忆。LOCAL、TEAM、GLOBAL 三层作用域模型确保协作保持高效，同时整个组织图的边界始终可执行。",
+      "三层作用域——LOCAL、TEAM、GLOBAL——用层级感知隔离替代扁平共享上下文，可规模化扩展。",
     layers: [
       {
         name: "LOCAL",
         summary: "每个工作空间独享私有记忆区。",
         detail:
-          "为单个 Agent 角色隔离的上下文。个人推理、临时结论和工作状态对同级和无关团队不可见。",
+          "隔离的上下文，对同级和无关团队不可见。",
         color: "from-sky-300/45 to-blue-500/15",
       },
       {
         name: "TEAM",
-        summary: "在直接父子层级内共享。",
+        summary: "在父子层级内共享。",
         detail:
-          "限定在直属团队的协作层。父级工作空间与其子级可以共享交接上下文，不会泄漏到同级团队。",
+          "限定在直属团队的交接上下文——不会泄漏到同级工作空间。",
         color: "from-cyan-300/45 to-cyan-500/15",
       },
       {
         name: "GLOBAL",
         summary: "来自根节点的组织级知识。",
         detail:
-          "由 Root 工作空间管理的策略、标准与制度知识沿层级下发。读权限全组织开放，写权限仅限根节点。",
+          "策略与标准沿层级下发。读：全组织。写：仅根节点。",
         color: "from-violet-300/45 to-violet-500/15",
       },
     ],
@@ -733,25 +773,25 @@ export const memoryArchitectureContent: Record<
       {
         label: "Awareness 命名空间",
         detail:
-          "可选的生产级后端，通过 AWARENESS_URL + AWARENESS_NAMESPACE 实现工作空间级隔离。",
+          "生产级后端，通过 AWARENESS_URL 实现工作空间级隔离。",
       },
       {
         label: "会话回溯",
         detail:
-          "通过 session-search 端点检索近期活动与记忆行，提供上下文回溯能力。",
+          "检索近期活动与记忆行，提供上下文回溯。",
       },
       {
         label: "记忆 → 技能复合积累",
         detail:
-          "成功的模式从 Agent 记忆毕业为可热重载的技能，跨会话持久化。",
+          "成功模式毕业为可热重载的技能，跨会话持久化。",
       },
     ],
     outcomesTitle: "为什么它能在生产环境取胜",
     outcomes: [
       "同级工作空间默认隔离",
       "记忆共享严格遵循组织拓扑",
-      "审批与升级路径精确映射层级关系",
-      "JSON Lines 事件日志满足审计需求",
+      "升级路径精确映射层级",
+      "JSON Lines 审计就绪事件日志",
     ],
   },
 };
@@ -785,28 +825,28 @@ export const enterpriseContent: Record<Locale, EnterpriseContent> = {
     eyebrow: "Platform Moats",
     title: "Why Starfire Is Defensible",
     description:
-      "Four architectural decisions compound into a durable advantage. Each is verifiable in the current codebase.",
+      "Four architectural decisions compound into a durable advantage — each verifiable in the codebase today.",
     moatsTitle: "Core Architectural Moats",
     moats: [
       {
         title: "The Node Is a Role",
         description:
-          "A workspace is not a task or a prompt — it is a durable organizational role. Roles survive model swaps, framework changes, and team restructuring.",
+          "Workspaces are durable org roles — they survive model swaps, framework changes, and team restructuring.",
       },
       {
         title: "The Org Chart Is the Topology",
         description:
-          "Communication, memory access, escalation, and approval routing all follow the same hierarchy. No manual edge wiring, no drift between design and runtime.",
+          "Communication, memory, escalation, and approval all follow one hierarchy. Zero manual wiring, zero drift.",
       },
       {
         title: "Governance Without Runtime Lock-in",
         description:
-          "Standardize authority, audit, and compliance across LangGraph, Claude Code, CrewAI, AutoGen, DeepAgents, and OpenClaw — without forcing one framework.",
+          "Unified authority and audit across six runtimes — without forcing a single framework.",
       },
       {
         title: "Memory as Infrastructure",
         description:
-          "HMA is not a feature bolted on top. It is the foundation that makes team expansion, skill compounding, and organizational learning possible at scale.",
+          "HMA is the foundation, not a bolt-on. It enables team expansion, skill compounding, and org learning at scale.",
       },
     ],
     proofTitle: "Current Product Proof",
@@ -815,37 +855,37 @@ export const enterpriseContent: Record<Locale, EnterpriseContent> = {
         metric: "6",
         label: "Runtime Adapters",
         detail:
-          "LangGraph, DeepAgents, Claude Code, CrewAI, AutoGen, OpenClaw — all shipping on main.",
+          "LangGraph, DeepAgents, Claude Code, CrewAI, AutoGen, OpenClaw — shipping on main.",
       },
       {
         metric: "4",
         label: "Security Tiers",
         detail:
-          "T1 sandbox → T2 standard → T3 privileged → T4 full-host. Per-workspace isolation by risk profile.",
+          "T1 sandbox → T4 full-host. Per-workspace isolation by risk.",
       },
       {
         metric: "614",
         label: "Tests Across 3 Layers",
         detail:
-          "278 Go + 188 Canvas vitest + 148 Python pytest. Race detection and coverage enforcement in CI.",
+          "Go + vitest + pytest. Race detection and coverage in CI.",
       },
       {
         metric: "10",
         label: "Canvas Ops Tabs",
         detail:
-          "Chat, Activity, Details, Skills, Terminal, Config, Files, Memory, Traces, Events — per workspace.",
+          "Chat, Activity, Terminal, Config, Memory, Traces — per workspace.",
       },
       {
         metric: "∞",
         label: "Fractal Team Expansion",
         detail:
-          "Any workspace becomes a managed sub-team. Upstream integrations stay intact. Recursion is native.",
+          "Any workspace becomes a sub-team. Recursion is native.",
       },
       {
         metric: "20+",
         label: "MCP Tools",
         detail:
-          "Expose platform operations to Claude Code, Cursor, or Codex via MCP server integration.",
+          "Platform ops exposed to Claude Code, Cursor, or Codex via MCP.",
       },
     ],
   },
@@ -853,28 +893,28 @@ export const enterpriseContent: Record<Locale, EnterpriseContent> = {
     eyebrow: "平台护城河",
     title: "为什么 Starfire 具备防御性",
     description:
-      "四项架构决策复合形成持久优势。每一项都可以在当前代码库中验证。",
+      "四项架构决策复合形成持久优势——每一项都可在当前代码库中验证。",
     moatsTitle: "核心架构护城河",
     moats: [
       {
         title: "节点即角色",
         description:
-          "工作空间不是任务也不是提示词——它是持久的组织角色。角色在模型更换、框架变更和团队重组中持续存在。",
+          "工作空间是持久的组织角色——在模型更换、框架变更和团队重组中持续存在。",
       },
       {
         title: "组织图即拓扑",
         description:
-          "通信、记忆访问、升级和审批路由全部遵循同一层级结构。无需手动连线，设计态与运行态零漂移。",
+          "通信、记忆、升级和审批遵循同一层级。零手动连线，零漂移。",
       },
       {
         title: "治理不锁定运行时",
         description:
-          "在 LangGraph、Claude Code、CrewAI、AutoGen、DeepAgents 和 OpenClaw 之间统一权限、审计与合规——而不强制使用单一框架。",
+          "跨六种运行时统一权限与审计——不强制使用单一框架。",
       },
       {
         title: "记忆即基础设施",
         description:
-          "HMA 不是后加的功能。它是让团队扩展、技能复合积累与组织学习能在规模化下成为可能的基础层。",
+          "HMA 是基础层，不是附加功能。它让团队扩展、技能积累与组织学习可规模化。",
       },
     ],
     proofTitle: "当前产品实证",
@@ -883,37 +923,37 @@ export const enterpriseContent: Record<Locale, EnterpriseContent> = {
         metric: "6",
         label: "运行时适配器",
         detail:
-          "LangGraph、DeepAgents、Claude Code、CrewAI、AutoGen、OpenClaw——全部在 main 分支交付。",
+          "LangGraph、DeepAgents、Claude Code、CrewAI、AutoGen、OpenClaw——在 main 交付。",
       },
       {
         metric: "4",
         label: "安全隔离层级",
         detail:
-          "T1 沙箱 → T2 标准 → T3 特权 → T4 全主机。按风险等级逐工作空间隔离。",
+          "T1 沙箱 → T4 全主机。按风险逐工作空间隔离。",
       },
       {
         metric: "614",
         label: "三层测试覆盖",
         detail:
-          "278 Go + 188 Canvas vitest + 148 Python pytest。CI 中启用竞态检测与覆盖率强制。",
+          "Go + vitest + pytest。CI 竞态检测与覆盖率强制。",
       },
       {
         metric: "10",
         label: "Canvas 操作标签",
         detail:
-          "聊天、活动、详情、技能、终端、配置、文件、记忆、追踪、事件——每个工作空间独立。",
+          "聊天、活动、终端、配置、记忆、追踪——每工作空间独立。",
       },
       {
         metric: "∞",
         label: "分形团队扩展",
         detail:
-          "任何工作空间可成为受管理的子团队。上游集成保持完整。递归是原生能力。",
+          "任何工作空间可成为子团队。递归是原生能力。",
       },
       {
         metric: "20+",
         label: "MCP 工具",
         detail:
-          "通过 MCP Server 将平台操作暴露给 Claude Code、Cursor 或 Codex。",
+          "通过 MCP 将平台操作暴露给 Claude Code、Cursor 或 Codex。",
       },
     ],
   },
@@ -949,7 +989,7 @@ export const finalCtaContent: Record<Locale, FinalCTAContent> = {
     titleTop: "Your AI org chart",
     titleBottom: "starts with one workspace.",
     subtitle:
-      "Any workspace can become a team. Any team can become an organization.",
+      "One workspace becomes a team. One team becomes an organization. Start now.",
     actions: [
       { label: "Architecture", href: siteLinks.architecture, primary: true },
       { label: "GitHub", href: siteLinks.github, primary: false },
@@ -965,7 +1005,7 @@ export const finalCtaContent: Record<Locale, FinalCTAContent> = {
     eyebrow: "开始构建",
     titleTop: "你的 AI 组织图",
     titleBottom: "从一个工作空间开始。",
-    subtitle: "任何工作空间都能成为团队。任何团队都能成长为组织。",
+    subtitle: "一个工作空间成为团队。一个团队成长为组织。现在就开始。",
     actions: [
       {
         label: "架构文档",
@@ -1002,15 +1042,15 @@ export const physicalVisionContent: Record<Locale, PhysicalVisionContent> = {
   en: {
     eyebrow: "Where This Goes",
     title: "From Agent Teams to Robot Teams",
-    subtitle: "The same organizational layer that governs software agents today will govern physical systems tomorrow.",
+    subtitle: "The organizational layer that governs software agents today will govern physical systems tomorrow.",
     description:
-      "Starfire's workspace abstraction is runtime-agnostic by design. A workspace is a role with an A2A interface — not an LLM with a prompt. The same hierarchy, memory boundaries, approval chains, and governance that organize AI agents in containers today can organize any autonomous system that speaks A2A.",
+      "A workspace is a role with an A2A interface — not an LLM with a prompt. The same hierarchy, memory, and governance that coordinate containers today can coordinate any autonomous system.",
     phases: [
       {
         era: "NOW",
         title: "Software Agent Teams",
         description:
-          "LLM agents in Docker containers, coordinated through A2A, governed by hierarchy. Six runtime adapters. Hierarchical memory. Production-grade observability.",
+          "LLM agents in containers — six runtimes, hierarchical memory, production observability, A2A coordination.",
         nodes: [
           "LangGraph orchestration",
           "Claude Code engineering",
@@ -1025,7 +1065,7 @@ export const physicalVisionContent: Record<Locale, PhysicalVisionContent> = {
         era: "NEXT",
         title: "Terminal + Device Agents",
         description:
-          "Same workspaces, same governance — extended to terminal bots, browser automation agents, and device-connected systems. The org chart scales to any runtime that implements A2A.",
+          "Same workspaces, same governance — extended to terminal bots, browser agents, and IoT controllers.",
         nodes: [
           "Terminal automation bots",
           "Browser agent fleets",
@@ -1038,7 +1078,7 @@ export const physicalVisionContent: Record<Locale, PhysicalVisionContent> = {
         era: "HORIZON",
         title: "Embodied Robot Teams",
         description:
-          "When autonomous robots need organizational structure — hierarchy, memory isolation, approval chains, escalation paths — the infrastructure already exists. Starfire becomes the control plane for physical-world agent teams.",
+          "When robots need org structure, the infrastructure already exists. Starfire becomes the physical-world control plane.",
         nodes: [
           "Warehouse robot fleets",
           "Autonomous vehicle coordination",
@@ -1049,20 +1089,20 @@ export const physicalVisionContent: Record<Locale, PhysicalVisionContent> = {
       },
     ],
     closingLine:
-      "The workspace is the role. The protocol is A2A. The boundary between digital and physical disappears — the organizational layer remains.",
+      "Workspace = role. Protocol = A2A. Digital and physical converge — the org layer remains.",
   },
   zh: {
     eyebrow: "未来方向",
     title: "从 Agent 团队到机器人团队",
     subtitle: "今天治理软件 Agent 的组织层，明天将治理物理世界的系统。",
     description:
-      "Starfire 的工作空间抽象在设计上与运行时无关。工作空间是一个拥有 A2A 接口的角色——而不是一个带提示词的 LLM。今天在容器中组织 AI Agent 的层级、记忆边界、审批链和治理体系，同样可以组织任何实现了 A2A 协议的自治系统。",
+      "工作空间是拥有 A2A 接口的角色——不是带提示词的 LLM。今天协调容器的层级、记忆与治理，同样可协调任何自治系统。",
     phases: [
       {
         era: "现在",
         title: "软件 Agent 团队",
         description:
-          "Docker 容器中的 LLM Agent，通过 A2A 协调，按层级治理。六种运行时适配器、分层记忆、生产级可观测性。",
+          "容器中的 LLM Agent——六种运行时、分层记忆、生产级可观测性、A2A 协调。",
         nodes: [
           "LangGraph 编排",
           "Claude Code 工程",
@@ -1077,7 +1117,7 @@ export const physicalVisionContent: Record<Locale, PhysicalVisionContent> = {
         era: "下一步",
         title: "终端 + 设备 Agent",
         description:
-          "同样的工作空间，同样的治理——扩展到终端机器人、浏览器自动化 Agent 和设备连接系统。组织图可扩展到任何实现 A2A 的运行时。",
+          "同样的工作空间与治理——扩展到终端机器人、浏览器 Agent 和 IoT 控制器。",
         nodes: [
           "终端自动化机器人",
           "浏览器 Agent 集群",
@@ -1090,7 +1130,7 @@ export const physicalVisionContent: Record<Locale, PhysicalVisionContent> = {
         era: "远景",
         title: "具身机器人团队",
         description:
-          "当自主机器人需要组织结构——层级、记忆隔离、审批链、升级路径——基础设施已经就位。Starfire 将成为物理世界 Agent 团队的控制平面。",
+          "当机器人需要组织结构，基础设施已就位。Starfire 成为物理世界控制平面。",
         nodes: [
           "仓储机器人编队",
           "自动驾驶车辆协调",
@@ -1101,7 +1141,7 @@ export const physicalVisionContent: Record<Locale, PhysicalVisionContent> = {
       },
     ],
     closingLine:
-      "工作空间即角色。协议是 A2A。数字与物理的边界消失——组织层永存。",
+      "工作空间 = 角色。协议 = A2A。数字与物理融合——组织层永存。",
   },
 };
 

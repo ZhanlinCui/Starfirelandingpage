@@ -48,3 +48,4 @@ Starfirelandingpage-main/
 Detailed continuation notes:
 
 - [HANDOFF.md](./HANDOFF.md)
+

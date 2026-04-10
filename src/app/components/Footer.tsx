@@ -10,9 +10,9 @@ export function Footer({ locale }: FooterProps) {
   const copy = footerContent[locale];
 
   return (
-    <footer className="border-t border-white/[0.08] py-12 px-6 bg-[#0b1424]">
+    <footer className="border-t border-white/[0.08] py-9 px-6 bg-[#0b1424]">
       <div className="max-w-[1200px] mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-7 mb-8">
           <div className="col-span-2 md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <span className="w-7 h-7 rounded-[7px] overflow-hidden border border-white/[0.14] bg-[#081022] flex items-center justify-center">
