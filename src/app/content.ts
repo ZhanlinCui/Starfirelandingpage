@@ -508,9 +508,9 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
         ],
         capabilities: ["HMA", "DeepAgents", "Langfuse", "A2A"],
         slides: [
-          { src: "", alt: "Canvas: research team topology with 3 sibling analysts" },
-          { src: "", alt: "Memory panel showing LOCAL scope isolation" },
-          { src: "", alt: "Langfuse trace chain across research workspaces" },
+          { src: "/screenshots/starfire-canvas-chat.png", alt: "Canvas: research team topology with 3 sibling analysts" },
+          { src: "/screenshots/starfire-memory.png", alt: "Memory panel showing LOCAL scope isolation" },
+          { src: "/screenshots/starfire-events.png", alt: "Langfuse trace chain across research workspaces" },
         ],
       },
       {
@@ -526,9 +526,9 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
         ],
         capabilities: ["6 adapters", "A2A", "HITL", "team expansion"],
         slides: [
-          { src: "", alt: "Canvas: engineering team with 4 heterogeneous runtime agents" },
-          { src: "", alt: "Drag-to-nest team expansion in action" },
-          { src: "", alt: "HITL approval dialog for deploy action" },
+          { src: "/screenshots/starfire-templates-comms.png", alt: "Canvas: engineering team with 4 heterogeneous runtime agents" },
+          { src: "/screenshots/starfire-context-menu.png", alt: "Drag-to-nest team expansion in action" },
+          { src: "/screenshots/starfire-canvas-chat.png", alt: "HITL approval dialog for deploy action" },
         ],
       },
       {
@@ -544,9 +544,9 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
         ],
         capabilities: ["RBAC", "approvals", "audit", "secrets"],
         slides: [
-          { src: "", alt: "Config panel with RBAC roles and compliance settings" },
-          { src: "", alt: "Activity log stream with approval events" },
-          { src: "", alt: "Secrets management with global inheritance" },
+          { src: "/screenshots/starfire-config.png", alt: "Config panel with RBAC roles and compliance settings" },
+          { src: "/screenshots/starfire-activity.png", alt: "Activity log stream with approval events" },
+          { src: "/screenshots/starfire-files.png", alt: "Secrets management with global inheritance" },
         ],
       },
       {
@@ -562,9 +562,9 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
         ],
         capabilities: ["Canvas", "WebSocket", "health sweep", "lifecycle"],
         slides: [
-          { src: "", alt: "Full Canvas overview with multi-team topology" },
-          { src: "", alt: "10-tab operations panel: Chat + Activity + Terminal" },
-          { src: "", alt: "Health sweep dashboard with real-time status" },
+          { src: "/screenshots/starfire-details.png", alt: "Full Canvas overview with multi-team topology" },
+          { src: "/screenshots/starfire-terminal.png", alt: "10-tab operations panel: Chat + Activity + Terminal" },
+          { src: "/screenshots/starfire-alerts-health.png", alt: "Health sweep dashboard with real-time status" },
         ],
       },
     ],
@@ -593,9 +593,9 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
         ],
         capabilities: ["HMA", "DeepAgents", "Langfuse", "A2A"],
         slides: [
-          { src: "", alt: "Canvas: 研究团队拓扑，3 个同级分析师" },
-          { src: "", alt: "记忆面板展示 LOCAL 作用域隔离" },
-          { src: "", alt: "跨研究工作空间的 Langfuse 追踪链" },
+          { src: "/screenshots/starfire-canvas-chat.png", alt: "Canvas: 研究团队拓扑，3 个同级分析师" },
+          { src: "/screenshots/starfire-memory.png", alt: "记忆面板展示 LOCAL 作用域隔离" },
+          { src: "/screenshots/starfire-events.png", alt: "跨研究工作空间的 Langfuse 追踪链" },
         ],
       },
       {
@@ -611,9 +611,9 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
         ],
         capabilities: ["6 适配器", "A2A", "HITL", "团队扩展"],
         slides: [
-          { src: "", alt: "Canvas: 4 个异构运行时 Agent 的工程团队" },
-          { src: "", alt: "拖拽嵌套实现团队扩展" },
-          { src: "", alt: "部署操作的人工审批对话框" },
+          { src: "/screenshots/starfire-templates-comms.png", alt: "Canvas: 4 个异构运行时 Agent 的工程团队" },
+          { src: "/screenshots/starfire-context-menu.png", alt: "拖拽嵌套实现团队扩展" },
+          { src: "/screenshots/starfire-canvas-chat.png", alt: "部署操作的人工审批对话框" },
         ],
       },
       {
@@ -629,9 +629,9 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
         ],
         capabilities: ["RBAC", "审批", "审计", "密钥管理"],
         slides: [
-          { src: "", alt: "配置面板：RBAC 角色与合规设置" },
-          { src: "", alt: "包含审批事件的活动日志流" },
-          { src: "", alt: "全局继承的密钥管理" },
+          { src: "/screenshots/starfire-config.png", alt: "配置面板：RBAC 角色与合规设置" },
+          { src: "/screenshots/starfire-activity.png", alt: "包含审批事件的活动日志流" },
+          { src: "/screenshots/starfire-files.png", alt: "全局继承的密钥管理" },
         ],
       },
       {
@@ -647,9 +647,9 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
         ],
         capabilities: ["Canvas", "WebSocket", "健康巡检", "生命周期"],
         slides: [
-          { src: "", alt: "完整 Canvas 概览：多团队拓扑" },
-          { src: "", alt: "10 标签操作面板：聊天 + 活动 + 终端" },
-          { src: "", alt: "实时状态的健康巡检面板" },
+          { src: "/screenshots/starfire-details.png", alt: "完整 Canvas 概览：多团队拓扑" },
+          { src: "/screenshots/starfire-terminal.png", alt: "10 标签操作面板：聊天 + 活动 + 终端" },
+          { src: "/screenshots/starfire-alerts-health.png", alt: "实时状态的健康巡检面板" },
         ],
       },
     ],
