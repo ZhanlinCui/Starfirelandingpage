@@ -72,6 +72,15 @@ export function Hero({ locale }: HeroProps) {
               <Github className="w-3.5 h-3.5 text-slate-400" />
               {copy.secondaryCta}
             </a>
+            <a
+              href={siteLinks.blog}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-6 py-3 text-[14px] font-medium text-slate-200 bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.1] rounded-lg transition-all duration-200"
+              style={{ fontFamily: fonts.display }}
+            >
+              {copy.blogCta}
+            </a>
           </div>
         </motion.div>
 

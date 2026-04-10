@@ -50,8 +50,8 @@ export default function App() {
           <MemoryArchitecture locale={locale} />
           <Enterprise locale={locale} />
           <WhyStarfire />
-          <FinalCTA locale={locale} />
           <PhysicalVision locale={locale} />
+          <FinalCTA locale={locale} />
         </main>
         <Footer locale={locale} />
       </div>

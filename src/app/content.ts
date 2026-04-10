@@ -6,6 +6,7 @@ export const siteLinks = {
   architecture:
     "https://github.com/ZhanlinCui/Starfire-AgentTeam/tree/main/docs/architecture",
   readme: "https://github.com/ZhanlinCui/Starfire-AgentTeam#readme",
+  blog: "https://juejin.cn/post/7626954879210700826",
   docs: "https://github.com/ZhanlinCui/Starfire-AgentTeam/tree/main/docs",
 } as const;
 
@@ -73,27 +74,30 @@ export type HeroContent = {
   titleHighlight: string;
   primaryCta: string;
   secondaryCta: string;
+  blogCta: string;
   description: string;
 };
 
 export const heroContent: Record<Locale, HeroContent> = {
   en: {
-    badge: "Open source · runtime ecosystem live",
-    titleLine1: "Run AI teams as an org,",
-    titleHighlight: "not a pile of prompts.",
-    primaryCta: "See the Architecture",
+    badge: "Open source · shipping on main",
+    titleLine1: "The org-native control plane",
+    titleHighlight: "for heterogeneous AI agent teams.",
+    primaryCta: "Explore Architecture",
     secondaryCta: "View on GitHub",
+    blogCta: "Blog",
     description:
-      "Workspace = role. Org chart = topology. Memory follows hierarchy, communication is A2A, and governance ships ready for production.",
+      "Workspace = role. Org chart = topology. Six runtimes, hierarchy-scoped memory, production governance — out of the box.",
   },
   zh: {
-    badge: "开源项目 · 运行时生态已上线",
-    titleLine1: "把 AI 团队按组织来运行，",
-    titleHighlight: "而不是按 prompt 来拼。",
-    primaryCta: "查看架构",
+    badge: "开源项目 · 持续交付中",
+    titleLine1: "面向异构 AI Agent 团队的",
+    titleHighlight: "组织原生控制平面。",
+    primaryCta: "探索架构",
     secondaryCta: "查看 GitHub",
+    blogCta: "博客",
     description:
-      "工作空间 = 角色。组织图 = 拓扑。记忆沿层级流动，通信走 A2A，治理默认就是生产级。",
+      "工作空间 = 角色，组织图 = 拓扑。六种运行时、层级记忆、生产级治理——开箱即用。",
   },
 };
 
@@ -198,7 +202,7 @@ export const heroVisualContent: Record<Locale, HeroVisualContent> = {
       { label: "trace", value: "langfuse + otel", dot: "bg-emerald-400/40" },
       {
         label: "runtime",
-        value: "runtime adapters · T1–T4",
+        value: "6 adapters · T1–T4",
         dot: "bg-amber-400/40",
       },
     ],
@@ -522,11 +526,11 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
         description:
           "Claude Code, LangGraph, OpenClaw — side-by-side in one team workspace with A2A routing and HITL gates.",
         bullets: [
-          "Runtime adapters in one workspace",
+          "Six runtime adapters, one workspace",
           "HITL approval for deploy and merge",
           "Recursive team expansion, zero drift",
         ],
-        capabilities: ["runtime adapters", "A2A", "HITL", "team expansion"],
+        capabilities: ["6 adapters", "A2A", "HITL", "team expansion"],
         slides: [
           { src: "/screenshots/starfire-details.png", alt: "Full Canvas overview with multi-team topology" },
           { src: "/screenshots/starfire-context-menu.png", alt: "Drag-to-nest team expansion in action" },
@@ -558,7 +562,6 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
         description:
           "Monitor health, tasks, and escalations across every team — with a 10-tab ops panel per workspace.",
         bullets: [
-          "First-run onboarding becomes obvious",
           "Real-time topology via WebSocket",
           "10-tab ops panel per workspace",
           "Pause / resume / restart any agent",
@@ -608,11 +611,11 @@ export const useCasesContent: Record<Locale, UseCasesContent> = {
         description:
           "Claude Code、LangGraph、OpenClaw 并行运行于同一工作空间，A2A 路由 + HITL 审批。",
         bullets: [
-          "运行时适配器同仓运行",
+          "六种运行时，一个工作空间",
           "部署与合并需人工审批",
           "递归团队扩展，零漂移",
         ],
-        capabilities: ["运行时适配器", "A2A", "HITL", "团队扩展"],
+        capabilities: ["6 适配器", "A2A", "HITL", "团队扩展"],
         slides: [
           { src: "/screenshots/starfire-templates-comms.png", alt: "Canvas: 4 个异构运行时 Agent 的工程团队" },
           { src: "/screenshots/starfire-context-menu.png", alt: "拖拽嵌套实现团队扩展" },
@@ -896,7 +899,7 @@ export const adapterEcosystemContent: Record<Locale, AdapterEcosystemContent> = 
       },
       {
         title: "工具 / 评估 / 观测层",
-        subtitle: "先连起来，再衡量它。",
+        subtitle: "接入生态，量化效果。",
         details: [
           "MCP 提供共享工具，NeMo Agent Toolkit 扩展工具、评估和观测，Langfuse 负责追踪结果。",
           "这一层让平台知道哪个 runtime 真正有效，并把信号回灌到记忆中。",
@@ -953,7 +956,7 @@ export const enterpriseContent: Record<Locale, EnterpriseContent> = {
       {
         title: "Governance Without Runtime Lock-in",
         description:
-          "Unified authority and audit across runtime adapters — without forcing a single framework.",
+          "Unified authority and audit across six runtimes — without forcing a single framework.",
       },
       {
         title: "Memory as Infrastructure",
@@ -1021,7 +1024,7 @@ export const enterpriseContent: Record<Locale, EnterpriseContent> = {
       {
         title: "治理不锁定运行时",
         description:
-          "跨运行时适配器统一权限与审计——不强制使用单一框架。",
+          "跨六种运行时统一权限与审计——不强制使用单一框架。",
       },
       {
         title: "记忆即基础设施",
@@ -1152,7 +1155,7 @@ export const finalCtaContent: Record<Locale, FinalCTAContent> = {
     actions: [
       { label: "Architecture", href: siteLinks.architecture, primary: true },
       { label: "GitHub", href: siteLinks.github, primary: false },
-      { label: "README", href: siteLinks.readme, primary: false },
+      { label: "Blog", href: siteLinks.blog, primary: false },
     ],
   },
   zh: {
@@ -1172,7 +1175,7 @@ export const finalCtaContent: Record<Locale, FinalCTAContent> = {
         primary: true,
       },
       { label: "GitHub", href: siteLinks.github, primary: false },
-      { label: "README", href: siteLinks.readme, primary: false },
+      { label: "博客", href: siteLinks.blog, primary: false },
     ],
   },
 };
@@ -1209,7 +1212,7 @@ export const physicalVisionContent: Record<Locale, PhysicalVisionContent> = {
         era: "NOW",
         title: "Software Agent Teams",
         description:
-          "LLM agents in containers — runtime adapters, hierarchical memory, production observability, A2A coordination.",
+          "LLM agents in containers — six runtime adapters, hierarchical memory, production observability, A2A coordination.",
         nodes: [
           "LangGraph orchestration",
           "Claude Code engineering",
@@ -1253,7 +1256,7 @@ export const physicalVisionContent: Record<Locale, PhysicalVisionContent> = {
   zh: {
     eyebrow: "未来方向",
     title: "从 Agent 团队到机器人团队",
-    subtitle: "今天治理软件 Agent 的组织层，也可以治理物理世界的系统。",
+    subtitle: "今天治理软件 Agent 的组织层，明天同样能治理物理世界。",
     description:
       "工作空间是拥有 A2A 接口的角色——不是带提示词的 LLM。今天协调容器的层级、记忆与治理，同样可协调任何自治系统。",
     phases: [
@@ -1261,7 +1264,7 @@ export const physicalVisionContent: Record<Locale, PhysicalVisionContent> = {
         era: "现在",
         title: "软件 Agent 团队",
         description:
-          "容器中的 LLM Agent——运行时适配器、分层记忆、生产级可观测性、A2A 协调。",
+          "容器中的 LLM Agent——六种运行时、分层记忆、生产级可观测性、A2A 协调。",
         nodes: [
           "LangGraph 编排",
           "Claude Code 工程",
